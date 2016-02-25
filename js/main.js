@@ -24,6 +24,9 @@ var clock;
 var stats;
 var key;
 
+// Periodic table elements and information
+var elements;
+
 function init() {
     // Create a WebGL renderer
     renderer = new t.WebGLRenderer();
@@ -69,7 +72,20 @@ function init() {
 }
 
 function initScene() {
+    initElements();
+}
 
+function initElements() {
+    // ID 0, 11, etc -> shortname -> name -> description -> atomic number -> something else -> object file name
+    addElement(0, "H", "Hydrogen", "Some information about it.", 54, 78, "ballons.obj");
+}
+
+function addElement(id, shortName, name, description, atomicNum, something, object) {
+    elements[id] = [shortName, name, description, atomicNum, something, object];
+}
+
+function loadObject(object) {
+    // ... load ... ("objects/" + object)
 }
 
 function animate() {
