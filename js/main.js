@@ -25,9 +25,18 @@ var stats;
 var key;
 
 // Periodic table elements and information
-var elements;
+var elements = [];
 
 function init() {
+    // Create the stats for tracking performance
+    stats = new Stats();
+
+    // Set the mode for the stats tracking to 0 for FPS mode
+    stats.setMode(0);
+
+    // Add the stats DOM element to the window
+    document.body.appendChild(stats.domElement);
+
     // Create a WebGL renderer
     renderer = new t.WebGLRenderer();
 
@@ -54,15 +63,6 @@ function init() {
 
     // Create a new instance of the key input handler
     key = new Keyboard();
-
-    // Create the stats for tracking performance
-    stats = new Stats();
-
-    // Set the mode for the stats tracking to 0 for FPS mode
-    stats.setMode(0);
-
-    // Add the stats DOM element to the window
-    document.body.appendChild(stats.domElement);
 
     // Call a function to setup the scene
     initScene();
@@ -101,10 +101,6 @@ function animate() {
 
 function update() {
     var dt = clock.getDelta();
-
-    sphere.position.x = sphere.position.x - 0.2;
-
-    stats.update();
 }
 
 function render() {
