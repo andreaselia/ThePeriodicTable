@@ -24,6 +24,8 @@ var clock;
 var stats;
 var key;
 
+var loader = new t.ObjectLoader();
+
 // Periodic table elements and information
 var elements = [];
 
@@ -71,17 +73,38 @@ function init() {
     animate();
 }
 
+function initElements() {
+    // column (x) -> row (y) -> shortname -> name -> description -> atomic number -> mass number -> object file name
+    addElement(0, 0, "Hy", "Hydrogen", "Some information about it.", 54, 78, "gas");
+    addElement(17, 0, "He", "Helium", "Some information about it.", 54, 78, "gas");
+}
+
 function initScene() {
     initElements();
+
+    var scale = new t.Vector3(5, 5, 5);
+
+    if (hasElements == false) {
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i] != undefined) {
+                var x = elements[i][0];
+                var y = elements[i][1];
+                var element = new t.Mesh(new t.CubeGeometry(scale.x, scale.y, 0), new t.MeshBasicMaterial());
+                element.position.set(-50 + x + (x * 5), y + (y * 5), 290);
+                element.material.color.setHex(0x444444);
+                // var obj = loader.parse('objects/' + elements[i][7] + '');
+                // scene.add(obj);
+                scene.add(element);
+            }
+        }
+
+
+        hasElements = true;
+    }
 }
 
-function initElements() {
-    // ID 0, 11, etc -> shortname -> name -> description -> atomic number -> something else -> object file name
-    addElement(0, "H", "Hydrogen", "Some information about it.", 54, 78, "ballons.obj");
-}
-
-function addElement(id, shortName, name, description, atomicNum, something, object) {
-    elements[id] = [shortName, name, description, atomicNum, something, object];
+function addElement(column, row, shortName, name, description, atomicNum, massNum, object) {
+    elements[elements.length] = [column, row, shortName, name, description, atomicNum, massNum, object];
 }
 
 function loadObject(object) {
@@ -102,6 +125,7 @@ function animate() {
 function update() {
     var dt = clock.getDelta();
 }
+var hasElements = false;
 
 function render() {
     renderer.render(scene, camera);
