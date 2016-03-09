@@ -29,7 +29,8 @@ var loader = new t.ObjectLoader();
 // Periodic table elements and information
 var elements = [];
 
-function init() {
+function init()
+{
     // Create the stats for tracking performance
     stats = new Stats();
 
@@ -67,33 +68,61 @@ function init() {
     key = new Keyboard();
 
     // Call a function to setup the scene
-    initScene();
+    initTableScene();
 
     // Start the updating and rendering
     animate();
 }
 
-function initElements() {
+function initTableElements()
+{
     // column (x) -> row (y) -> shortname -> name -> description -> atomic number -> mass number -> object file name
-    addElement(0, 0, "Hy", "Hydrogen", "Some information about it.", 54, 78, "gas");
-    addElement(17, 0, "He", "Helium", "Some information about it.", 54, 78, "gas");
+    // the Y positiosn are in reverse
+    addElement(0, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(0, 1, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(0, 2, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(0, 3, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(0, 4, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(0, 5, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(0, 6, "H", "Hydrogen", "Some information about it.", 3, 7, "question");
+
+    addElement(1, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(2, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(3, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(4, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(5, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(6, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(7, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(8, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(9, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(10, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(11, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(12, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(13, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(14, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(15, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(16, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(17, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+    addElement(18, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
 }
 
-function initScene() {
-    initElements();
+function initTableScene()
+{
+    initTableElements();
 
-    var scale = new t.Vector3(5, 5, 5);
+    var scale = new t.Vector3(8, 8, 8);
 
-    if (hasElements == false) {
-        for (var i = 0; i < elements.length; i++) {
-            if (elements[i] != undefined) {
+    if (hasElements == false)
+    {
+        for (var i = 0; i < elements.length; i++)
+        {
+            if (elements[i] != undefined)
+            {
                 var x = elements[i][0];
                 var y = elements[i][1];
                 var element = new t.Mesh(new t.CubeGeometry(scale.x, scale.y, 0), new t.MeshBasicMaterial());
-                element.position.set(-50 + x + (x * 5), y + (y * 5), 290);
+                element.position.set(-80 + x + (x * 8), y + (y * 8), 290);
                 element.material.color.setHex(0x444444);
-                // var obj = loader.parse('objects/' + elements[i][7] + '');
-                // scene.add(obj);
                 scene.add(element);
             }
         }
@@ -103,15 +132,23 @@ function initScene() {
     }
 }
 
-function addElement(column, row, shortName, name, description, atomicNum, massNum, object) {
+function initInfoScene()
+{
+
+}
+
+function addElement(column, row, shortName, name, description, atomicNum, massNum, object)
+{
     elements[elements.length] = [column, row, shortName, name, description, atomicNum, massNum, object];
 }
 
-function loadObject(object) {
+function loadObject(object)
+{
     // ... load ... ("objects/" + object)
 }
 
-function animate() {
+function animate()
+{
     stats.begin();
 
     update();
@@ -122,11 +159,13 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-function update() {
+function update()
+{
     var dt = clock.getDelta();
 }
 var hasElements = false;
 
-function render() {
+function render()
+{
     renderer.render(scene, camera);
 }
