@@ -29,6 +29,18 @@ var loader = new t.ObjectLoader();
 // Periodic table elements and information
 var elements = [];
 
+// Elements added to here for their collisions
+var objects = [];
+
+var raycaster;
+
+var mouse = {
+    x: 0,
+    y: 0
+};
+
+var scale = 8;
+
 function init()
 {
     // Create the stats for tracking performance
@@ -47,7 +59,7 @@ function init()
     renderer.setSize(WIDTH, HEIGHT);
 
     // Change the colour of the background
-    renderer.setClearColor(0xFFFFFF);
+    renderer.setClearColor(0xB0D2D3);
 
     // Add the renderers DOM element to the window
     document.body.appendChild(renderer.domElement);
@@ -67,6 +79,14 @@ function init()
     // Create a new instance of the key input handler
     key = new Keyboard();
 
+    raycaster = new t.Raycaster();
+
+    // Handled mouse clicking on elements
+    document.addEventListener('mousedown', onMouseDown, false);
+
+    // Handles the browser being resized
+    window.addEventListener('resize', onWindowResize, false);
+
     // Call a function to setup the scene
     initTableScene();
 
@@ -78,39 +98,21 @@ function initTableElements()
 {
     // column (x) -> row (y) -> shortname -> name -> description -> atomic number -> mass number -> object file name
     // the Y positiosn are in reverse
-    addElement(0, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(0, 1, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(0, 2, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(0, 3, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(0, 4, "Li", "Lithium", "Some information about it.", 3, 7, "question");
+
+    // All has to be in reverse... for now?
+    // First Column
+    addElement(0, 0, "Fr", "Francium", "Some information about it.", 1, 1, "question");
+    addElement(0, 1, "Cs", "Caesium", "Some information about it.", 3, 7, "question");
+    addElement(0, 2, "Rb", "Rubidium", "Some information about it.", 3, 7, "question");
+    addElement(0, 3, "K", "Potassium", "Some information about it.", 3, 7, "question");
+    addElement(0, 4, "Na", "Sodium", "Some information about it.", 3, 7, "question");
     addElement(0, 5, "Li", "Lithium", "Some information about it.", 3, 7, "question");
     addElement(0, 6, "H", "Hydrogen", "Some information about it.", 3, 7, "question");
-
-    addElement(1, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(2, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(3, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(4, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(5, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(6, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(7, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(8, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(9, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(10, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(11, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(12, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(13, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(14, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(15, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(16, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(17, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(18, 0, "Li", "Lithium", "Some information about it.", 3, 7, "question");
 }
 
 function initTableScene()
 {
     initTableElements();
-
-    var scale = new t.Vector3(8, 8, 8);
 
     if (hasElements == false)
     {
@@ -120,10 +122,19 @@ function initTableScene()
             {
                 var x = elements[i][0];
                 var y = elements[i][1];
-                var element = new t.Mesh(new t.CubeGeometry(scale.x, scale.y, 0), new t.MeshBasicMaterial());
-                element.position.set(-80 + x + (x * 8), y + (y * 8), 290);
-                element.material.color.setHex(0x444444);
+                var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+                element.position.set(-(scale * 10) + x + (x * scale), y + (y * scale), 290);
+                element.material.color.setHex(0xFFFFFF);
+                element.name = {
+                    id: i,
+                    b: true
+                };
+
+                // Add the "element" to the scene
                 scene.add(element);
+
+                // Add the element to the objects array so we can detect when it is clicked
+                objects.push(element);
             }
         }
 
@@ -132,9 +143,24 @@ function initTableScene()
     }
 }
 
-function initInfoScene()
+function initInfoScene(elementId)
 {
+    // load the element info on elementId
+    console.log(elements[elementId.id]);
 
+    var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    element.position.set(-(scale * 10) + 0 + (0 * scale), 0 + (0 * scale), 290);
+    element.material.color.setHex(0x444444);
+    element.name = {
+        id: elementId.id,
+        b: false
+    };
+
+    // Add the "element" to the scene
+    scene.add(element);
+
+    // Add the element to the objects array so we can detect when it is clicked
+    objects.push(element);
 }
 
 function addElement(column, row, shortName, name, description, atomicNum, massNum, object)
@@ -144,7 +170,7 @@ function addElement(column, row, shortName, name, description, atomicNum, massNu
 
 function loadObject(object)
 {
-    // ... load ... ("objects/" + object)
+    // load objects here
 }
 
 function animate()
@@ -168,4 +194,53 @@ var hasElements = false;
 function render()
 {
     renderer.render(scene, camera);
+}
+
+function onMouseDown(event)
+{
+    event.preventDefault();
+
+    // Get a value between 1 and -1 for the mouse position on screen
+    mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
+    mouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    var intersects = raycaster.intersectObjects(objects);
+
+    if (intersects.length > 0)
+    {
+        intersects[0].object.material.color.setHex(Math.random() * 0xffffff);
+
+        if (intersects[0].object.name.b == true)
+        {
+            clearScene();
+            initInfoScene(intersects[0].object.name);
+        }
+        else
+        {
+            clearScene();
+            initTableScene();
+        }
+    }
+}
+
+function clearScene()
+{
+    objects = [];
+    scene = new t.Scene();
+}
+
+function onWindowResize()
+{
+    // Set the WIDTH and HEIGHT variables to the new window width/height
+    WIDTH = window.innerWidth;
+    HEIGHT = window.innerHeight;
+
+    // Set the camera aspect to the new aspect
+    camera.aspect = WIDTH / HEIGHT;
+    camera.updateProjectionMatrix();
+
+    // Set the renderer set
+    renderer.setSize(WIDTH, HEIGHT);
 }
