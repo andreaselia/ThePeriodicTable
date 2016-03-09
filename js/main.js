@@ -45,6 +45,8 @@ var mouse = {
 
 var scale = 8;
 
+var hasElements = false;
+
 function init()
 {
     // Create the stats for tracking performance
@@ -116,6 +118,7 @@ function initTableElements()
 
 function initTableScene()
 {
+	console.log("backAgain");
     initTableElements();
 
     if (hasElements == false)
@@ -171,7 +174,7 @@ function initInfoScene(elementId)
 	
 	//Loads current element and adds it to the scene
 	//Error: XMLHttpRequest cannot load
-	currentElementCollada.load('current.dae', function(collada)
+	currentElementCollada.load('js/current.DAE', function(collada)
 	{
 		currentElementDae = collada.scene;
 		
@@ -180,7 +183,7 @@ function initInfoScene(elementId)
 		currentElementDae.position.z = 0;
 		
 		//Scales model
-		currentElementDae.scale.x = currentElementDae.scale.y = currentElementDae.scale.z = 1;
+		currentElementDae.scale.x = currentElementDae.scale.y = currentElementDae.scale.z = 10;
 		currentElementDae.updateMatrix();
 		
 		scene.add(currentElementDae);
@@ -213,7 +216,7 @@ function update()
 {
     var dt = clock.getDelta();
 }
-var hasElements = false;
+
 
 function render()
 {
@@ -243,6 +246,7 @@ function onMouseDown(event)
         }
         else
         {
+			console.log("inside");
             clearScene();
             initTableScene();
         }
@@ -251,6 +255,7 @@ function onMouseDown(event)
 
 function clearScene()
 {
+	hasElements = false;
     objects = [];
     scene = new t.Scene();
 }
