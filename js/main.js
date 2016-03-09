@@ -24,6 +24,10 @@ var clock;
 var stats;
 var key;
 
+//Stores current element Collada and Dae file
+var currentElementCollada;
+var currentElementDae;
+
 var loader = new t.ObjectLoader();
 
 // Periodic table elements and information
@@ -161,6 +165,26 @@ function initInfoScene(elementId)
 
     // Add the element to the objects array so we can detect when it is clicked
     objects.push(element);
+	
+	currentElementCollada = new THREE.ColladaLoader();
+	currentElementCollada.options.convertUpAxis = true;
+	
+	//Loads current element and adds it to the scene
+	//Error: XMLHttpRequest cannot load
+	currentElementCollada.load('current.dae', function(collada)
+	{
+		currentElementDae = collada.scene;
+		
+		currentElementDae.position.x = 0;
+		currentElementDae.position.y = 0;
+		currentElementDae.position.z = 0;
+		
+		//Scales model
+		currentElementDae.scale.x = currentElementDae.scale.y = currentElementDae.scale.z = 1;
+		currentElementDae.updateMatrix();
+		
+		scene.add(currentElementDae);
+	} );
 }
 
 function addElement(column, row, shortName, name, description, atomicNum, massNum, object)
