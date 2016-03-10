@@ -28,6 +28,8 @@ var key;
 var currentElementCollada;
 var currentElementDae;
 
+var rotationMatrix;
+
 var loader = new t.ObjectLoader();
 
 // Periodic table elements and information
@@ -218,9 +220,24 @@ function loadObject(object)
     // load objects here
 }
 
+function rotateAroundObjectAxis(object, axis, radians) {
+    rotationMatrix = new t.Matrix4();
+    rotationMatrix.makeRotationAxis(axis.normalize(), radians);
+
+    object.matrix.multiply(rotationMatrix);
+
+    object.rotation.setFromRotationMatrix(object.matrix);
+}
+
 function animate()
 {
     stats.begin();
+	
+	if(currentElementDae)
+	{
+	var xAxis = new t.Vector3(1,0,0);
+	rotateAroundObjectAxis(currentElementDae, xAxis, Math.PI / 180);
+	}
 
     update();
     render();
