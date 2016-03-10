@@ -107,13 +107,13 @@ function initTableElements()
 
     // All has to be in reverse... for now?
     // First Column
-    addElement(0, 0, "Fr", "Francium", "Some information about it.", 1, 1, "UnknownObject", 0, "diagram");
-    addElement(0, 1, "Cs", "Caesium", "Some information about it.", 3, 7, "SulfurIodineThalliumObject", 45, "diagram");
-    addElement(0, 2, "Rb", "Rubidium", "Some information about it.", 3, 7, "TelluriumObject", 0, "diagram");
-    addElement(0, 3, "K", "Potassium", "Some information about it.", 3, 7, "FluorineObject", 45, "diagram");
-    addElement(0, 4, "Na", "Sodium", "Some information about it.", 3, 7, "OxygenObject", 0, "diagram");
-    addElement(0, 5, "Li", "Lithium", "Some information about it.", 3, 7, "ChlorineObject", 45, "diagram");
-    addElement(0, 6, "H", "Hydrogen", "Some information about it.", 3, 7, "BromineTechnefiumObject", 45, "diagram");
+    addElement(0, 0, "Fr", "Francium", "Some information about it.", 1, 1, "UnknownObject", 0);
+    addElement(0, 1, "Cs", "Caesium", "Some information about it.", 3, 7, "SulfurIodineThalliumObject", 45);
+    addElement(0, 2, "Rb", "Rubidium", "Some information about it.", 3, 7, "TelluriumObject", 0);
+    addElement(0, 3, "K", "Potassium", "Some information about it.", 3, 7, "FluorineObject", 45);
+    addElement(0, 4, "Na", "Sodium", "Some information about it.", 3, 7, "OxygenObject", 0);
+    addElement(0, 5, "Li", "Lithium", "Some information about it.", 3, 7, "ChlorineObject", 45);
+    addElement(0, 6, "H", "Hydrogen", "Some information about it.", 3, 7, "BromineTechnefiumObject", 45);
 }
 
 function initTableScene()
@@ -155,7 +155,7 @@ function initInfoScene(elementId)
     // console.log(elements[elementId.id]);
 
     var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
-    element.position.set(-(scale * 10) + 0 + (0 * scale), 0 + (0 * scale), 290);
+    element.position.set(-(scale * 10) + 0 + (0 * scale), -1 + (-1 * scale), 290);
     element.material.color.setHex(0x444444);
     element.name = {
         id: elementId.id,
@@ -172,7 +172,6 @@ function initInfoScene(elementId)
     currentElementCollada.options.convertUpAxis = true;
 
     //Loads current element and adds it to the scene
-    //Error: XMLHttpRequest cannot load
     currentElementCollada.load('objects/' + elements[elementId.id][7] + '.DAE', function(collada)
     {
         currentElementDae = collada.scene;
