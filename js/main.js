@@ -233,13 +233,7 @@ function animate()
 {
     stats.begin();
 	
-	if(currentElementDae)
-	{
-	var xAxis = new t.Vector3(1,0,0);
-	rotateAroundObjectAxis(currentElementDae, xAxis, Math.PI / 180);
-	}
-
-    update();
+	update();
     render();
 
     stats.end();
@@ -250,6 +244,12 @@ function animate()
 function update()
 {
     var dt = clock.getDelta();
+	
+	if(currentElementDae)
+	{
+	var xAxis = new t.Vector3(1,0,0);
+	rotateAroundObjectAxis(currentElementDae, xAxis, Math.PI / 180);
+	}
 }
 
 
