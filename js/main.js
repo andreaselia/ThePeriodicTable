@@ -118,7 +118,7 @@ function initTableElements()
 
 function initTableScene()
 {
-	console.log("backAgain");
+    console.log("backAgain");
     initTableElements();
 
     if (hasElements == false)
@@ -168,26 +168,26 @@ function initInfoScene(elementId)
 
     // Add the element to the objects array so we can detect when it is clicked
     objects.push(element);
-	
-	currentElementCollada = new THREE.ColladaLoader();
-	currentElementCollada.options.convertUpAxis = true;
-	
-	//Loads current element and adds it to the scene
-	//Error: XMLHttpRequest cannot load
-	currentElementCollada.load('js/current.DAE', function(collada)
-	{
-		currentElementDae = collada.scene;
-		
-		currentElementDae.position.x = 0;
-		currentElementDae.position.y = 0;
-		currentElementDae.position.z = 0;
-		
-		//Scales model
-		currentElementDae.scale.x = currentElementDae.scale.y = currentElementDae.scale.z = 10;
-		currentElementDae.updateMatrix();
-		
-		scene.add(currentElementDae);
-	} );
+
+    currentElementCollada = new THREE.ColladaLoader();
+    currentElementCollada.options.convertUpAxis = true;
+
+    //Loads current element and adds it to the scene
+    //Error: XMLHttpRequest cannot load
+    currentElementCollada.load('objects/current.DAE', function(collada)
+    {
+        currentElementDae = collada.scene;
+
+        currentElementDae.position.x = 0;
+        currentElementDae.position.y = 0;
+        currentElementDae.position.z = 0;
+
+        //Scales model
+        currentElementDae.scale.x = currentElementDae.scale.y = currentElementDae.scale.z = 10;
+        currentElementDae.updateMatrix();
+
+        scene.add(currentElementDae);
+    });
 }
 
 function addElement(column, row, shortName, name, description, atomicNum, massNum, object)
@@ -246,7 +246,7 @@ function onMouseDown(event)
         }
         else
         {
-			console.log("inside");
+            console.log("inside");
             clearScene();
             initTableScene();
         }
@@ -255,7 +255,7 @@ function onMouseDown(event)
 
 function clearScene()
 {
-	hasElements = false;
+    hasElements = false;
     objects = [];
     scene = new t.Scene();
 }
