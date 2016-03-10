@@ -107,18 +107,17 @@ function initTableElements()
 
     // All has to be in reverse... for now?
     // First Column
-    addElement(0, 0, "Fr", "Francium", "Some information about it.", 1, 1, "question");
-    addElement(0, 1, "Cs", "Caesium", "Some information about it.", 3, 7, "question");
-    addElement(0, 2, "Rb", "Rubidium", "Some information about it.", 3, 7, "question");
-    addElement(0, 3, "K", "Potassium", "Some information about it.", 3, 7, "question");
-    addElement(0, 4, "Na", "Sodium", "Some information about it.", 3, 7, "question");
-    addElement(0, 5, "Li", "Lithium", "Some information about it.", 3, 7, "question");
-    addElement(0, 6, "H", "Hydrogen", "Some information about it.", 3, 7, "question");
+    addElement(0, 0, "Fr", "Francium", "Some information about it.", 1, 1, "UnknownObject", 0, "diagram");
+    addElement(0, 1, "Cs", "Caesium", "Some information about it.", 3, 7, "SulfurIodineThalliumObject", 45, "diagram");
+    addElement(0, 2, "Rb", "Rubidium", "Some information about it.", 3, 7, "TelluriumObject", 0, "diagram");
+    addElement(0, 3, "K", "Potassium", "Some information about it.", 3, 7, "FluorineObject", 45, "diagram");
+    addElement(0, 4, "Na", "Sodium", "Some information about it.", 3, 7, "OxygenObject", 0, "diagram");
+    addElement(0, 5, "Li", "Lithium", "Some information about it.", 3, 7, "ChlorineObject", 45, "diagram");
+    addElement(0, 6, "H", "Hydrogen", "Some information about it.", 3, 7, "BromineTechnefiumObject", 45, "diagram");
 }
 
 function initTableScene()
 {
-    console.log("backAgain");
     initTableElements();
 
     if (hasElements == false)
@@ -153,7 +152,7 @@ function initTableScene()
 function initInfoScene(elementId)
 {
     // load the element info on elementId
-    console.log(elements[elementId.id]);
+    // console.log(elements[elementId.id]);
 
     var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
     element.position.set(-(scale * 10) + 0 + (0 * scale), 0 + (0 * scale), 290);
@@ -169,21 +168,21 @@ function initInfoScene(elementId)
     // Add the element to the objects array so we can detect when it is clicked
     objects.push(element);
 
-    currentElementCollada = new THREE.ColladaLoader();
+    currentElementCollada = new t.ColladaLoader();
     currentElementCollada.options.convertUpAxis = true;
 
     //Loads current element and adds it to the scene
     //Error: XMLHttpRequest cannot load
-    currentElementCollada.load('objects/current.DAE', function(collada)
+    currentElementCollada.load('objects/' + elements[elementId.id][7] + '.DAE', function(collada)
     {
         currentElementDae = collada.scene;
 
-        currentElementDae.position.x = 0;
-        currentElementDae.position.y = 0;
-        currentElementDae.position.z = 0;
+        // Set the position of the model
+        currentElementDae.position.set(0, 0, 0);
 
         //Scales model
         currentElementDae.scale.set(10, 10, 10);
+        currentElementDae.rotation.set(0, elements[elementId.id][8], 0);
         currentElementDae.updateMatrix();
 
         // This can also be used for applying the textures
@@ -210,9 +209,9 @@ function setColladaColour(dae, material)
     }
 }
 
-function addElement(column, row, shortName, name, description, atomicNum, massNum, object)
+function addElement(column, row, shortName, name, description, atomicNum, massNum, object, spawnRotation)
 {
-    elements[elements.length] = [column, row, shortName, name, description, atomicNum, massNum, object];
+    elements[elements.length] = [column, row, shortName, name, description, atomicNum, massNum, object, spawnRotation];
 }
 
 function loadObject(object)
@@ -266,7 +265,6 @@ function onMouseDown(event)
         }
         else
         {
-            console.log("inside");
             clearScene();
             initTableScene();
         }
