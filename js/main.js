@@ -183,11 +183,31 @@ function initInfoScene(elementId)
         currentElementDae.position.z = 0;
 
         //Scales model
-        currentElementDae.scale.x = currentElementDae.scale.y = currentElementDae.scale.z = 10;
+        currentElementDae.scale.set(10, 10, 10);
         currentElementDae.updateMatrix();
+
+        // This can also be used for applying the textures
+        // to the models by using "map" not "color"
+        setColladaColour(currentElementDae, new t.MeshBasicMaterial(
+        {
+            color: 0xFFFFFF
+        }));
 
         scene.add(currentElementDae);
     });
+}
+
+function setColladaColour(dae, material)
+{
+    dae.material = material;
+
+    if (dae.children)
+    {
+        for (var i = 0; i < dae.children.length; i++)
+        {
+            setColladaColour(dae.children[i], material);
+        }
+    }
 }
 
 function addElement(column, row, shortName, name, description, atomicNum, massNum, object)
