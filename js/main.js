@@ -95,6 +95,9 @@ function init()
     // Handles the browser being resized
     window.addEventListener('resize', onWindowResize, false);
 
+    // Create all of the elements
+    initTableElements();
+
     // Call a function to setup the scene
     initTableScene();
 
@@ -120,8 +123,6 @@ function initTableElements()
 
 function initTableScene()
 {
-    initTableElements();
-
     if (hasElements == false)
     {
         for (var i = 0; i < elements.length; i++)
@@ -220,7 +221,8 @@ function loadObject(object)
     // load objects here
 }
 
-function rotateAroundObjectAxis(object, axis, radians) {
+function rotateAroundObjectAxis(object, axis, radians)
+{
     rotationMatrix = new t.Matrix4();
     rotationMatrix.makeRotationAxis(axis.normalize(), radians);
 
@@ -232,8 +234,8 @@ function rotateAroundObjectAxis(object, axis, radians) {
 function animate()
 {
     stats.begin();
-	
-	update();
+
+    update();
     render();
 
     stats.end();
@@ -244,12 +246,12 @@ function animate()
 function update()
 {
     var dt = clock.getDelta();
-	
-	if(currentElementDae)
-	{
-	var xAxis = new t.Vector3(1,0,0);
-	rotateAroundObjectAxis(currentElementDae, xAxis, Math.PI / 180);
-	}
+
+    if (currentElementDae)
+    {
+        var xAxis = new t.Vector3(1, 0, 0);
+        rotateAroundObjectAxis(currentElementDae, xAxis, Math.PI / 180);
+    }
 }
 
 
