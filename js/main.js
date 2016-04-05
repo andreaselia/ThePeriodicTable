@@ -112,13 +112,14 @@ function initTableElements()
 
     // All has to be in reverse... for now?
     // First Column
-    addElement(0, 0, "Fr", "Francium", "Some information about it.", 1, 1, "UnknownObject", 0);
-    addElement(0, 1, "Cs", "Caesium", "Some information about it.", 3, 7, "SulfurIodineThalliumObject", 45);
-    addElement(0, 2, "Rb", "Rubidium", "Some information about it.", 3, 7, "TelluriumObject", 0);
-    addElement(0, 3, "K", "Potassium", "Some information about it.", 3, 7, "FluorineObject", 45);
-    addElement(0, 4, "Na", "Sodium", "Some information about it.", 3, 7, "OxygenObject", 0);
-    addElement(0, 5, "Li", "Lithium", "Some information about it.", 3, 7, "ChlorineObject", 45);
-    addElement(0, 6, "H", "Hydrogen", "Some information about it.", 3, 7, "BromineTechnefiumObject", 45);
+    addElement(0, 0, "Fr", "Francium", "Some information about it.", 1, 1, "UnknownObject", "texture");
+    addElement(0, 1, "Cs", "Caesium", "Some information about it.", 3, 7, "SulfurIodineThalliumObject", "texture");
+    addElement(0, 2, "Rb", "Rubidium", "Some information about it.", 3, 7, "TelluriumObject", "texture");
+    addElement(0, 3, "K", "Potassium", "Some information about it.", 3, 7, "FluorineObject", "texture");
+    addElement(0, 4, "Na", "Sodium", "Some information about it.", 3, 7, "OxygenObject", "texture");
+    addElement(0, 5, "Li", "Lithium", "Some information about it.", 3, 7, "ChlorineObject", "texture");
+    addElement(0, 6, "H", "Hydrogen", "Some information about it.", 3, 7, "BromineTechnefiumObject", "texture");
+    addElement(2, 0, "H", "Hydrogen", "Some information about it.", 3, 7, "BromineTechnefiumObject", "texture");
 }
 
 function initTableScene()
@@ -132,7 +133,7 @@ function initTableScene()
                 var x = elements[i][0];
                 var y = elements[i][1];
                 var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
-                element.position.set(-(scale * 10) + x + (x * scale), y + (y * scale), 290);
+                element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale), 290);
                 element.material.color.setHex(0xFFFFFF);
                 element.name = {
                     id: i,
@@ -182,9 +183,8 @@ function initInfoScene(elementId)
         // Set the position of the model
         currentElementDae.position.set(0, 0, 0);
 
-        //Scales model
+        // Scales model
         currentElementDae.scale.set(10, 10, 10);
-        currentElementDae.rotation.set(0, elements[elementId.id][8], 0);
         currentElementDae.updateMatrix();
 
         // This can also be used for applying the textures
