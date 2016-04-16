@@ -30,10 +30,13 @@ var currentElementDae;
 
 var rotationMatrix;
 
-var loader = new t.ObjectLoader();
+var textureLoader;
 
 // Periodic table elements and information
 var elements = [];
+
+// Store an array of element textures
+// var elementTextures = [];
 
 // Elements added to here for their collisions
 var objects = [];
@@ -88,6 +91,10 @@ function init() {
 
     raycaster = new t.Raycaster();
 
+    // textureLoader = new t.TextureLoader();
+
+    // elementTextures.push(textureLoader.load('objects/images/image.png'));
+
     // Handled mouse clicking on elements
     document.addEventListener('mousedown', onMouseDown, false);
 
@@ -95,17 +102,18 @@ function init() {
     window.addEventListener('resize', onWindowResize, false);
 
     // Create all of the elements
-    var xmlrequest = new XMLHttpRequest();
-    var file = "js/elements.json";
+    var xmlRequest = new XMLHttpRequest();
+    var jsonFile = "js/elements.json";
 
-    xmlrequest.onreadystatechange = function() {
-        if (xmlrequest.readyState == 4 && xmlrequest.status == 200) {
+    xmlRequest.onreadystatechange = function() {
+        if (xmlRequest.readyState == 4 && xmlRequest.status == 200) {
             // Parse the json data
-            var jsonData = JSON.parse(xmlrequest.responseText);
+            var jsonData = JSON.parse(xmlRequest.responseText);
 
             // Loop through the json data and create the elements
             for (var i = 0; i < jsonData.length; i++) {
-                addElement(jsonData[i].x, jsonData[i].y, jsonData[i].symbol, jsonData[i].name, null, jsonData[i].atomicNum, jsonData[i].massNum, jsonData[i].model, jsonData[i].texture);
+                // Add the element to the elements array
+                elements.push({x: jsonData[i].x, y: jsonData[i].y, symbol: jsonData[i].symbol, name: jsonData[i].name, atomicNum: jsonData[i].atomicNum, massNum: jsonData[i].massNum, model: jsonData[i].model, texture: jsonData[i].texture});
             }
 
             // Call a function to setup the scene
@@ -113,8 +121,8 @@ function init() {
         }
     };
 
-    xmlrequest.open('get', file, true);
-    xmlrequest.send();
+    xmlRequest.open('get', jsonFile, true);
+    xmlRequest.send();
 
     // Start the updating and rendering
     animate();
@@ -128,10 +136,10 @@ function initTableScene()
         {
             if (elements[i] != undefined)
             {
-                var x = elements[i][0];
-                console.log("woo: " + x);
-                var y = elements[i][1];
+                var x = elements[i].x;
+                var y = elements[i].y;
                 var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
                 element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale), 290);
                 element.material.color.setHex(0xFFFFFF);
                 element.name = {
@@ -146,8 +154,6 @@ function initTableScene()
                 objects.push(element);
             }
         }
-
-
         hasElements = true;
     }
 }
@@ -174,7 +180,7 @@ function initInfoScene(elementId) {
     currentElementCollada.options.convertUpAxis = true;
 
     //Loads current element and adds it to the scene
-    currentElementCollada.load('objects/' + elements[elementId.id][7] + '.DAE', function(collada) {
+    currentElementCollada.load('objects/' + elements[elementId.id].model + '.DAE', function(collada) {
         currentElementDae = collada.scene;
 
         // Set the position of the model
@@ -188,14 +194,11 @@ function initInfoScene(elementId) {
         // to the models by using "map" not "color"
         setColladaColour(currentElementDae, new t.MeshBasicMaterial({
             color: 0xFFFFFF
+            // map: elementTextures[0]
         }));
 
         scene.add(currentElementDae);
     });
-}
-
-function addElement(column, row, shortName, name, description, atomicNum, massNum, object, spawnRotation) {
-    elements[elements.length] = [column, row, shortName, name, description, atomicNum, massNum, object, spawnRotation];
 }
 
 function setColladaColour(dae, material) {
@@ -206,10 +209,6 @@ function setColladaColour(dae, material) {
             setColladaColour(dae.children[i], material);
         }
     }
-}
-
-function loadObject(object) {
-    // load objects here
 }
 
 function rotateAroundObjectAxis(object, axis, radians) {
@@ -240,7 +239,6 @@ function update() {
         rotateAroundObjectAxis(currentElementDae, xAxis, Math.PI / 180);
     }
 }
-
 
 function render() {
     renderer.render(scene, camera);

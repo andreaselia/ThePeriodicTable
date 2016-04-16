@@ -14,6 +14,6 @@
     "name": "Lithium",
     "atomicNum": 3,
     "massNum": 7,
-    "model": "BromineTechnefiumObject",
+    "model": "OxygenObject",
     "texture": "texture"
 }]
