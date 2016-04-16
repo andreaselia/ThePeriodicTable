@@ -49,8 +49,7 @@ var scale = 8;
 
 var hasElements = false;
 
-function init()
-{
+function init() {
     // Create the stats for tracking performance
     stats = new Stats();
 
@@ -96,41 +95,38 @@ function init()
     window.addEventListener('resize', onWindowResize, false);
 
     // Create all of the elements
-    initTableElements();
+    var xmlrequest = new XMLHttpRequest();
+    var file = "js/elements.json";
 
-    // Call a function to setup the scene
-    initTableScene();
+    xmlrequest.onreadystatechange = function() {
+        if (xmlrequest.readyState == 4 && xmlrequest.status == 200) {
+            // Parse the json data
+            var jsonData = JSON.parse(xmlrequest.responseText);
+
+            // Loop through the json data and create the elements
+            for (var i = 0; i < jsonData.length; i++) {
+                addElement(jsonData[i].x, jsonData[i].y, jsonData[i].symbol, jsonData[i].name, null, jsonData[i].atomicNum, jsonData[i].massNum, jsonData[i].model, jsonData[i].texture);
+            }
+
+            // Call a function to setup the scene
+            initTableScene();
+        }
+    };
+
+    xmlrequest.open('get', file, true);
+    xmlrequest.send();
 
     // Start the updating and rendering
     animate();
 }
 
-function initTableElements()
-{
-    // column (x) -> row (y) -> shortname -> name -> description -> atomic number -> mass number -> object file name
-    // the Y positiosn are in reverse
-
-    // All has to be in reverse... for now?
-    // First Column
-    addElement(0, 0, "Fr", "Francium", "Some information about it.", 1, 1, "UnknownObject", "texture");
-    addElement(0, 1, "Cs", "Caesium", "Some information about it.", 3, 7, "SulfurIodineThalliumObject", "texture");
-    addElement(0, 2, "Rb", "Rubidium", "Some information about it.", 3, 7, "TelluriumObject", "texture");
-    addElement(0, 3, "K", "Potassium", "Some information about it.", 3, 7, "FluorineObject", "texture");
-    addElement(0, 4, "Na", "Sodium", "Some information about it.", 3, 7, "OxygenObject", "texture");
-    addElement(0, 5, "Li", "Lithium", "Some information about it.", 3, 7, "ChlorineObject", "texture");
-    addElement(0, 6, "H", "Hydrogen", "Some information about it.", 3, 7, "BromineTechnefiumObject", "texture");
-    addElement(2, 0, "H", "Hydrogen", "Some information about it.", 3, 7, "BromineTechnefiumObject", "texture");
-}
-
-function initTableScene()
-{
-    if (hasElements == false)
-    {
-        for (var i = 0; i < elements.length; i++)
-        {
-            if (elements[i] != undefined)
-            {
+function initTableScene() {
+    console.log(5);
+    if (hasElements == false) {
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i] != undefined) {
                 var x = elements[i][0];
+                console.log("woo: " + x);
                 var y = elements[i][1];
                 var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
                 element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale), 290);
@@ -153,8 +149,7 @@ function initTableScene()
     }
 }
 
-function initInfoScene(elementId)
-{
+function initInfoScene(elementId) {
     // load the element info on elementId
     // console.log(elements[elementId.id]);
 
@@ -176,8 +171,7 @@ function initInfoScene(elementId)
     currentElementCollada.options.convertUpAxis = true;
 
     //Loads current element and adds it to the scene
-    currentElementCollada.load('objects/' + elements[elementId.id][7] + '.DAE', function(collada)
-    {
+    currentElementCollada.load('objects/' + elements[elementId.id][7] + '.DAE', function(collada) {
         currentElementDae = collada.scene;
 
         // Set the position of the model
@@ -189,8 +183,7 @@ function initInfoScene(elementId)
 
         // This can also be used for applying the textures
         // to the models by using "map" not "color"
-        setColladaColour(currentElementDae, new t.MeshBasicMaterial(
-        {
+        setColladaColour(currentElementDae, new t.MeshBasicMaterial({
             color: 0xFFFFFF
         }));
 
@@ -198,31 +191,25 @@ function initInfoScene(elementId)
     });
 }
 
-function setColladaColour(dae, material)
-{
+function addElement(column, row, shortName, name, description, atomicNum, massNum, object, spawnRotation) {
+    elements[elements.length] = [column, row, shortName, name, description, atomicNum, massNum, object, spawnRotation];
+}
+
+function setColladaColour(dae, material) {
     dae.material = material;
 
-    if (dae.children)
-    {
-        for (var i = 0; i < dae.children.length; i++)
-        {
+    if (dae.children) {
+        for (var i = 0; i < dae.children.length; i++) {
             setColladaColour(dae.children[i], material);
         }
     }
 }
 
-function addElement(column, row, shortName, name, description, atomicNum, massNum, object, spawnRotation)
-{
-    elements[elements.length] = [column, row, shortName, name, description, atomicNum, massNum, object, spawnRotation];
-}
-
-function loadObject(object)
-{
+function loadObject(object) {
     // load objects here
 }
 
-function rotateAroundObjectAxis(object, axis, radians)
-{
+function rotateAroundObjectAxis(object, axis, radians) {
     rotationMatrix = new t.Matrix4();
     rotationMatrix.makeRotationAxis(axis.normalize(), radians);
 
@@ -231,8 +218,7 @@ function rotateAroundObjectAxis(object, axis, radians)
     object.rotation.setFromRotationMatrix(object.matrix);
 }
 
-function animate()
-{
+function animate() {
     stats.begin();
 
     update();
@@ -243,25 +229,21 @@ function animate()
     requestAnimationFrame(animate);
 }
 
-function update()
-{
+function update() {
     var dt = clock.getDelta();
 
-    if (currentElementDae)
-    {
+    if (currentElementDae) {
         var xAxis = new t.Vector3(1, 0, 0);
         rotateAroundObjectAxis(currentElementDae, xAxis, Math.PI / 180);
     }
 }
 
 
-function render()
-{
+function render() {
     renderer.render(scene, camera);
 }
 
-function onMouseDown(event)
-{
+function onMouseDown(event) {
     event.preventDefault();
 
     // Get a value between 1 and -1 for the mouse position on screen
@@ -272,32 +254,26 @@ function onMouseDown(event)
 
     var intersects = raycaster.intersectObjects(objects);
 
-    if (intersects.length > 0)
-    {
+    if (intersects.length > 0) {
         intersects[0].object.material.color.setHex(Math.random() * 0xffffff);
 
-        if (intersects[0].object.name.b == true)
-        {
+        if (intersects[0].object.name.b == true) {
             clearScene();
             initInfoScene(intersects[0].object.name);
-        }
-        else
-        {
+        } else {
             clearScene();
             initTableScene();
         }
     }
 }
 
-function clearScene()
-{
+function clearScene() {
     hasElements = false;
     objects = [];
     scene = new t.Scene();
 }
 
-function onWindowResize()
-{
+function onWindowResize() {
     // Set the WIDTH and HEIGHT variables to the new window width/height
     WIDTH = window.innerWidth;
     HEIGHT = window.innerHeight;

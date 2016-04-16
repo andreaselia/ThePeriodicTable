@@ -1,0 +1,19 @@
+[{
+    "x": 0,
+    "y": 0,
+    "symbol": "H",
+    "name": "Hydrogen",
+    "atomicNum": 3,
+    "massNum": 7,
+    "model": "BromineTechnefiumObject",
+    "texture": "texture"
+}, {
+    "x": 1,
+    "y": 0,
+    "symbol": "Li",
+    "name": "Lithium",
+    "atomicNum": 3,
+    "massNum": 7,
+    "model": "BromineTechnefiumObject",
+    "texture": "texture"
+}]
