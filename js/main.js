@@ -120,23 +120,6 @@ function init() {
     animate();
 }
 
-function initTableElements()
-{
-    // column (x) -> row (y) -> shortname -> name -> description -> atomic number -> mass number -> object file name
-    // the Y positiosn are in reverse
-
-    // All has to be in reverse... for now?
-    // First Column
-    addElement(0, 6, "Fr", "Francium", "Some information about it.", 1, 1, "UnknownObject", "texture");
-    addElement(0, 5, "Cs", "Caesium", "Some information about it.", 3, 7, "SulfurIodineThalliumObject", "texture");
-    addElement(0, 4, "Rb", "Rubidium", "Some information about it.", 3, 7, "TelluriumObject", "texture");
-    addElement(0, 3, "K", "Potassium", "Some information about it.", 3, 7, "FluorineObject", "texture");
-    addElement(0, 2, "Na", "Sodium", "Some information about it.", 3, 7, "OxygenObject", "texture");
-    addElement(0, 1, "Li", "Lithium", "Some information about it.", 3, 7, "ChlorineObject", "texture");
-    addElement(0, 0, "H", "Hydrogen", "Some information about it.", 3, 7, "BromineTechnefiumObject", "texture");
-    addElement(2, 0, "H2", "Hydrogen2", "Some information about it.", 3, 7, "ChlorineObject", "texture");
-}
-
 function initTableScene()
 {
     if (hasElements == false)
