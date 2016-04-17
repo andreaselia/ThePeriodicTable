@@ -4,26 +4,36 @@
     <contributor>
       <author>Millie</author>
       <authoring_tool>OpenCOLLADA for 3ds Max;  ;  </authoring_tool>
-      <source_data>file:///C:/Users/Millie/Desktop/AMA%20-%203DS%20Max%20Objects/Task1%20Objects/OxygenObject.max</source_data>
+      <source_data>file:///C:/Users/Millie/Desktop/FinalExports/OxygenObject.max</source_data>
     </contributor>
-    <created>2016-03-09T21:49:49</created>
-    <modified>2016-03-09T21:49:49</modified>
+    <created>2016-04-05T19:18:07</created>
+    <modified>2016-04-05T19:18:07</modified>
     <unit name="inch" meter="0.0254"/>
     <up_axis>Z_UP</up_axis>
   </asset>
   <library_effects>
-    <effect id="_1_-_Default">
+    <effect id="Material__2">
       <profile_COMMON>
+        <newparam sid="metalRedT_jpg-surface">
+          <surface type="2D">
+            <init_from>metalRedT_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="metalRedT_jpg-sampler">
+          <sampler2D>
+            <source>metalRedT_jpg-surface</source>
+          </sampler2D>
+        </newparam>
         <technique sid="common">
           <blinn>
             <emission>
               <color>0 0 0 1</color>
             </emission>
             <ambient>
-              <color>0.5882353 0.5882353 0.5882353 1</color>
+              <color>0.588 0.588 0.588 1</color>
             </ambient>
             <diffuse>
-              <color>0.5882353 0.5882353 0.5882353 1</color>
+              <texture texture="metalRedT_jpg-sampler" texcoord="CHANNEL1"/>
             </diffuse>
             <specular>
               <color>0.9 0.9 0.9 1</color>
@@ -67,8 +77,8 @@
     </effect>
   </library_effects>
   <library_materials>
-    <material id="_1_-_Default-material" name="_1_-_Default">
-      <instance_effect url="#_1_-_Default"/>
+    <material id="Material__2-material" name="Material__2">
+      <instance_effect url="#Material__2"/>
     </material>
   </library_materials>
   <library_geometries>
@@ -107,7 +117,7 @@
         <vertices id="geom-Cylinder001-vertices">
           <input semantic="POSITION" source="#geom-Cylinder001-positions"/>
         </vertices>
-        <triangles material="_1_-_Default_1" count="2008">
+        <triangles material="Material__2_1" count="2008">
           <input semantic="VERTEX" source="#geom-Cylinder001-vertices" offset="0"/>
           <input semantic="NORMAL" source="#geom-Cylinder001-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#geom-Cylinder001-map1" offset="2" set="0"/>
@@ -125,6 +135,11 @@
       </technique_common>
     </light>
   </library_lights>
+  <library_images>
+    <image id="metalRedT_jpg">
+      <init_from>./images/0_metalRedT.jpg</init_from>
+    </image>
+  </library_images>
   <library_visual_scenes>
     <visual_scene id="MaxScene">
       <node name="EnvironmentAmbientLight">
@@ -137,7 +152,9 @@
           <instance_geometry url="#geom-Cylinder001">
             <bind_material>
               <technique_common>
-                <instance_material symbol="_1_-_Default_1" target="#_1_-_Default-material"/>
+                <instance_material symbol="Material__2_1" target="#Material__2-material">
+                  <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
               </technique_common>
             </bind_material>
           </instance_geometry>

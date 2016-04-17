@@ -52,6 +52,9 @@ var scale = 8;
 
 var hasElements = false;
 
+var stateTable = false;
+var stateInfo = false;
+
 function init() {
     // Create the stats for tracking performance
     stats = new Stats();
@@ -91,7 +94,7 @@ function init() {
 
     raycaster = new t.Raycaster();
 
-    // textureLoader = new t.TextureLoader();
+    textureLoader = new t.TextureLoader();
 
     // elementTextures.push(textureLoader.load('objects/images/image.png'));
 
@@ -113,9 +116,18 @@ function init() {
             // Loop through the json data and create the elements
             for (var i = 0; i < jsonData.length; i++) {
                 // Add the element to the elements array
-                elements.push({x: jsonData[i].x, y: jsonData[i].y, symbol: jsonData[i].symbol, name: jsonData[i].name, atomicNum: jsonData[i].atomicNum, massNum: jsonData[i].massNum, model: jsonData[i].model, texture: jsonData[i].texture});
+                elements.push({
+                    x: jsonData[i].x,
+                    y: jsonData[i].y,
+                    symbol: jsonData[i].symbol,
+                    name: jsonData[i].name,
+                    atomicNum: jsonData[i].atomicNum,
+                    massNum: jsonData[i].massNum,
+                    model: jsonData[i].model,
+                    texture: jsonData[i].texture,
+                    description: jsonData[i].description
+                });
             }
-
             // Call a function to setup the scene
             initTableScene();
         }
@@ -128,19 +140,16 @@ function init() {
     animate();
 }
 
-function initTableScene()
-{
-    if (hasElements == false)
-    {
-        for (var i = 0; i < elements.length; i++)
-        {
-            if (elements[i] != undefined)
-            {
+function initTableScene() {
+    stateTable = true;
+    if (hasElements == false) {
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i] != undefined) {
                 var x = elements[i].x;
                 var y = elements[i].y;
                 var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
 
-                element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale), 290);
+                element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale) + 30, 290);
                 element.material.color.setHex(0xFFFFFF);
                 element.name = {
                     id: i,
@@ -159,11 +168,15 @@ function initTableScene()
 }
 
 function initInfoScene(elementId) {
-    // load the element info on elementId
-    // console.log(elements[elementId.id]);
+    var descriptionBox = document.createElement('id');
+    descriptionBox.id = 'descriptionBox';
+    descriptionBox.style = 'position: absolute;top: 200px; left: 0;right: 0;width: 40%;overflow: hidden;margin: 0 auto;min-width: 540px;max-width: 540px;background-color: #eee;color: #444;padding: 10px;border-radius: 2px;z-index: 5;';
+    descriptionBox.innerHTML = elements[elementId.id].description;
+    document.body.appendChild(descriptionBox);
 
-    var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
-    element.position.set(-(scale * 10) + 0 + (0 * scale), -1 + (-1 * scale), 290);
+    var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0.1), new t.MeshBasicMaterial());
+
+    element.position.set(-(scale * 10) + scale, -1 + (-1 * scale), 290);
     element.material.color.setHex(0x444444);
     element.name = {
         id: elementId.id,
@@ -184,20 +197,25 @@ function initInfoScene(elementId) {
         currentElementDae = collada.scene;
 
         // Set the position of the model
-        currentElementDae.position.set(0, 0, 0);
+        currentElementDae.position.set(200, 0, 0);
 
         // Scales model
         currentElementDae.scale.set(10, 10, 10);
         currentElementDae.updateMatrix();
 
-        // This can also be used for applying the textures
-        // to the models by using "map" not "color"
+        // This can also be used for applying the textures to the models by
+        // using "map" not "color"
         setColladaColour(currentElementDae, new t.MeshBasicMaterial({
-            color: 0xFFFFFF
-            // map: elementTextures[0]
+            map: textureLoader.load('objects/images/' + elements[elementId.id].texture)
         }));
 
         scene.add(currentElementDae);
+
+        var bbox = new THREE.BoundingBoxHelper(currentElementDae, 0x444444);
+        bbox.update();
+        scene.add(bbox);
+
+        console.log(bbox.max);
     });
 }
 
@@ -230,13 +248,15 @@ function animate() {
 
     requestAnimationFrame(animate);
 }
+var i = 0;
 
 function update() {
     var dt = clock.getDelta();
 
-    if (currentElementDae) {
-        var xAxis = new t.Vector3(1, 0, 0);
-        rotateAroundObjectAxis(currentElementDae, xAxis, Math.PI / 180);
+    if (currentElementDae && stateInfo) {
+        currentElementDae.rotation.set(i, 0, i);
+
+        i += 0.01;
     }
 }
 
@@ -261,9 +281,16 @@ function onMouseDown(event) {
         if (intersects[0].object.name.b == true) {
             clearScene();
             initInfoScene(intersects[0].object.name);
+            stateTable = false;
+            stateInfo = true;
         } else {
             clearScene();
+
+            var elem = document.getElementById("descriptionBox");
+            elem.parentNode.removeChild(elem);
             initTableScene();
+            stateTable = true;
+            stateInfo = false;
         }
     }
 }

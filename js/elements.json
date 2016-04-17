@@ -1,19 +1,893 @@
 [{
-    "x": 0,
-    "y": 0,
-    "symbol": "H",
-    "name": "Hydrogen",
-    "atomicNum": 3,
-    "massNum": 7,
-    "model": "BromineTechnefiumObject",
-    "texture": "texture"
-}, {
-    "x": 1,
-    "y": 0,
-    "symbol": "Li",
-    "name": "Lithium",
-    "atomicNum": 3,
-    "massNum": 7,
-    "model": "OxygenObject",
-    "texture": "texture"
-}]
+        "x": 0,
+        "y": 0,
+        "symbol": "H",
+        "name": "Hydrogen",
+        "atomicNum": 1,
+        "massNum": 1.01,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "<h4>What's in a name?</h4><br>From the Greek words hydro and genes, which together mean \"water forming.\"<br><br>Say what?<br><br>Hydrogen is pronounced as HI-dreh-jen.<br><br>History and Uses:<br>Scientists had been producing hydrogen for years before it was recognized as an element. Written records indicate that Robert Boyle produced hydrogen gas as early as 1671 while experimenting with iron and acids. Hydrogen was first recognized as a distinct element by Henry Cavendish in 1766.<br><br>Composed of a single proton and a single electron, hydrogen is the simplest and most abundant element in the universe. It is estimated that 90% of the visible universe is composed of hydrogen.<br><br>Hydrogen is the raw fuel that most stars 'burn' to produce energy. The same process, known as fusion, is being studied as a possible power source for use on earth. The sun's supply of hydrogen is expected to last another 5 billion years.<br><br>Hydrogen is a commercially important element. Large amounts of hydrogen are combined with nitrogen from the air to produce ammonia (NH3) through a process called the Haber process. Hydrogen is also added to fats and oils, such as peanut oil, through a process called hydrogenation. Liquid hydrogen is used in the study of superconductors and, when combined with liquid oxygen, makes an excellent rocket fuel.<br><br>Hydrogen combines with other elements to form numerous compounds. Some of the common ones are: water (H2O), ammonia (NH3), methane (CH4), table sugar (C12H22O11), hydrogen peroxide (H2O2) and hydrochloric acid (HCl).<br><br>Hydrogen has three common isotopes. The simplest isotope, called protium, is just ordinary hydrogen. The second, a stable isotope called deuterium, was discovered in 1932. The third isotope, tritium, was discovered in 1934."
+    }, {
+        "x": 17,
+        "y": 0,
+        "symbol": "He",
+        "name": "Helium",
+        "atomicNum": 2,
+        "massNum": 4.00,
+        "model": "HeliumObject",
+        "texture": "0_greenT.jpg",
+        "description": "description goes here"
+    },
+
+    {
+        "x": 0,
+        "y": 1,
+        "symbol": "Li",
+        "name": "Lithium",
+        "atomicNum": 3,
+        "massNum": 6.94,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 1,
+        "y": 1,
+        "symbol": "Be",
+        "name": "Beryllium",
+        "atomicNum": 4,
+        "massNum": 9.01,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 12,
+        "y": 1,
+        "symbol": "B",
+        "name": "Boron",
+        "atomicNum": 5,
+        "massNum": 10.81,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 13,
+        "y": 1,
+        "symbol": "C",
+        "name": "Carbon",
+        "atomicNum": 6,
+        "massNum": 12.01,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 14,
+        "y": 1,
+        "symbol": "N",
+        "name": "Nitrogen",
+        "atomicNum": 7,
+        "massNum": 14.01,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 15,
+        "y": 1,
+        "symbol": "O",
+        "name": "Oxygen",
+        "atomicNum": 8,
+        "massNum": 15.99,
+        "model": "OxygenObject",
+        "texture": "0_ironT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 16,
+        "y": 1,
+        "symbol": "F",
+        "name": "Fluorine",
+        "atomicNum": 9,
+        "massNum": 18.99,
+        "model": "FluorineObject",
+        "texture": "0_redWhiteT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 17,
+        "y": 1,
+        "symbol": "Ne",
+        "name": "Neon",
+        "atomicNum": 10,
+        "massNum": 20.18,
+        "model": "NeonObject",
+        "texture": "0_neonT.jpg",
+        "description": "description goes here"
+    },
+
+    {
+        "x": 0,
+        "y": 2,
+        "symbol": "Na",
+        "name": "Sodium",
+        "atomicNum": 11,
+        "massNum": 22.99,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 1,
+        "y": 2,
+        "symbol": "Mg",
+        "name": "Magnesium",
+        "atomicNum": 12,
+        "massNum": 24.31,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 12,
+        "y": 2,
+        "symbol": "Al",
+        "name": "Aluminum",
+        "atomicNum": 13,
+        "massNum": 26.98,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 13,
+        "y": 2,
+        "symbol": "Si",
+        "name": "Silicon",
+        "atomicNum": 14,
+        "massNum": 28.09,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 14,
+        "y": 2,
+        "symbol": "P",
+        "name": "Phosphorus",
+        "atomicNum": 15,
+        "massNum": 30.97,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 15,
+        "y": 2,
+        "symbol": "S",
+        "name": "Sulfur",
+        "atomicNum": 16,
+        "massNum": 32.06,
+        "model": "SulfurIodineThalliumObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 16,
+        "y": 2,
+        "symbol": "Cl",
+        "name": "Chlorine",
+        "atomicNum": 17,
+        "massNum": 35.45,
+        "model": "ChlorineObject",
+        "texture": "0_aquaBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 17,
+        "y": 2,
+        "symbol": "Ar",
+        "name": "Argon",
+        "atomicNum": 18,
+        "massNum": 39.95,
+        "model": "TelluriumArgonObject",
+        "texture": "0_brassT.jpg",
+        "description": "description goes here"
+    },
+
+    {
+        "x": 0,
+        "y": 3,
+        "symbol": "K",
+        "name": "Potassium",
+        "atomicNum": 19,
+        "massNum": 39.10,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 1,
+        "y": 3,
+        "symbol": "Ca",
+        "name": "Calcium",
+        "atomicNum": 20,
+        "massNum": 40.08,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 2,
+        "y": 3,
+        "symbol": "Sc",
+        "name": "Scandium",
+        "atomicNum": 21,
+        "massNum": 44.96,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 3,
+        "y": 3,
+        "symbol": "Ti",
+        "name": "Titanium",
+        "atomicNum": 22,
+        "massNum": 47.87,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 4,
+        "y": 3,
+        "symbol": "V",
+        "name": "Vanadium",
+        "atomicNum": 23,
+        "massNum": 50.94,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 5,
+        "y": 3,
+        "symbol": "Cr",
+        "name": "Chromium",
+        "atomicNum": 24,
+        "massNum": 51.99,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 6,
+        "y": 3,
+        "symbol": "Mn",
+        "name": "Manganese",
+        "atomicNum": 25,
+        "massNum": 54.94,
+        "model": "ManganeseObject",
+        "texture": "0_woodT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 7,
+        "y": 3,
+        "symbol": "Fe",
+        "name": "Iron",
+        "atomicNum": 26,
+        "massNum": 55.85,
+        "model": "IronObject",
+        "texture": "0_ironT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 8,
+        "y": 3,
+        "symbol": "Co",
+        "name": "Cobalt",
+        "atomicNum": 27,
+        "massNum": 58.93,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 9,
+        "y": 3,
+        "symbol": "Ni",
+        "name": "Nickel",
+        "atomicNum": 28,
+        "massNum": 58.69,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 10,
+        "y": 3,
+        "symbol": "Cu",
+        "name": "Copper",
+        "atomicNum": 29,
+        "massNum": 63.55,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 11,
+        "y": 3,
+        "symbol": "Zn",
+        "name": "Zinc",
+        "atomicNum": 30,
+        "massNum": 65.38,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 12,
+        "y": 3,
+        "symbol": "Ga",
+        "name": "Gallium",
+        "atomicNum": 31,
+        "massNum": 69.72,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 13,
+        "y": 3,
+        "symbol": "Ge",
+        "name": "Germanium",
+        "atomicNum": 32,
+        "massNum": 72.63,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 14,
+        "y": 3,
+        "symbol": "As",
+        "name": "Arsenic",
+        "atomicNum": 33,
+        "massNum": 74.92,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 15,
+        "y": 3,
+        "symbol": "Se",
+        "name": "Selenium",
+        "atomicNum": 34,
+        "massNum": 78.97,
+        "model": "SeleniumRutheniumObject",
+        "texture": "0_solarPanelT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 16,
+        "y": 3,
+        "symbol": "Br",
+        "name": "Bromine",
+        "atomicNum": 35,
+        "massNum": 79.90,
+        "model": "BromineTechnefiumObject",
+        "texture": "0_whiteT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 17,
+        "y": 3,
+        "symbol": "Kr",
+        "name": "Krypton",
+        "atomicNum": 36,
+        "massNum": 83.80,
+        "model": "KryptonObject",
+        "texture": "0_metalRedT.jpg",
+        "description": "description goes here"
+    },
+
+    {
+        "x": 0,
+        "y": 4,
+        "symbol": "Rb",
+        "name": "Rubidium",
+        "atomicNum": 37,
+        "massNum": 85.47,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 1,
+        "y": 4,
+        "symbol": "Sr",
+        "name": "Strontium",
+        "atomicNum": 38,
+        "massNum": 87.62,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 2,
+        "y": 4,
+        "symbol": "Y",
+        "name": "Yttrium",
+        "atomicNum": 39,
+        "massNum": 88.91,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 3,
+        "y": 4,
+        "symbol": "Zr",
+        "name": "Zirconium",
+        "atomicNum": 40,
+        "massNum": 91.224,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 4,
+        "y": 4,
+        "symbol": "Nb",
+        "name": "Niobium",
+        "atomicNum": 41,
+        "massNum": 92.91,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 5,
+        "y": 4,
+        "symbol": "Mo",
+        "name": "Molybdenum",
+        "atomicNum": 42,
+        "massNum": 95.95,
+        "model": "MolybdenumRheniumObject",
+        "texture": "0_ironT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 6,
+        "y": 4,
+        "symbol": "Tc",
+        "name": "Technetium",
+        "atomicNum": 43,
+        "massNum": 98.00,
+        "model": "BromineTechnefiumObject",
+        "texture": "0_whiteT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 7,
+        "y": 4,
+        "symbol": "Ru",
+        "name": "Ruthenium",
+        "atomicNum": 44,
+        "massNum": 101.07,
+        "model": "SeleniumRutheniumObject",
+        "texture": "0_solarPanelT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 8,
+        "y": 4,
+        "symbol": "Rh",
+        "name": "Rhodium",
+        "atomicNum": 45,
+        "massNum": 102.91,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 9,
+        "y": 4,
+        "symbol": "Pd",
+        "name": "Palladium",
+        "atomicNum": 46,
+        "massNum": 106.42,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 10,
+        "y": 4,
+        "symbol": "Ag",
+        "name": "Silver",
+        "atomicNum": 47,
+        "massNum": 107.87,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 11,
+        "y": 4,
+        "symbol": "Cd",
+        "name": "Cadmium",
+        "atomicNum": 48,
+        "massNum": 112.41,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 12,
+        "y": 4,
+        "symbol": "In",
+        "name": "Indium",
+        "atomicNum": 49,
+        "massNum": 114.82,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 13,
+        "y": 4,
+        "symbol": "Sn",
+        "name": "Tin",
+        "atomicNum": 50,
+        "massNum": 118.71,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 14,
+        "y": 4,
+        "symbol": "Sb",
+        "name": "Antimony",
+        "atomicNum": 51,
+        "massNum": 121.76,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 15,
+        "y": 4,
+        "symbol": "Te",
+        "name": "Tellurium",
+        "atomicNum": 52,
+        "massNum": 127.60,
+        "model": "TelluriumArgonObject",
+        "texture": "0_brassT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 16,
+        "y": 4,
+        "symbol": "I",
+        "name": "Iodine",
+        "atomicNum": 53,
+        "massNum": 126.90,
+        "model": "SulfurIodineThalliumObject",
+        "texture": "0_aquaBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 17,
+        "y": 4,
+        "symbol": "Xe",
+        "name": "Xenon",
+        "atomicNum": 54,
+        "massNum": 131.29,
+        "model": "XenonObject",
+        "texture": "0_metalRedT.jpg",
+        "description": "description goes here"
+    },
+
+    {
+        "x": 0,
+        "y": 5,
+        "symbol": "Cs",
+        "name": "Cesium",
+        "atomicNum": 55,
+        "massNum": 132.91,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 1,
+        "y": 5,
+        "symbol": "Ba",
+        "name": "Barium",
+        "atomicNum": 56,
+        "massNum": 137.33,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 3,
+        "y": 5,
+        "symbol": "Hf",
+        "name": "Hafnium",
+        "atomicNum": 72,
+        "massNum": 178.49,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 4,
+        "y": 5,
+        "symbol": "Ta",
+        "name": "Tantalum",
+        "atomicNum": 73,
+        "massNum": 180.95,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 5,
+        "y": 5,
+        "symbol": "W",
+        "name": "Tungsten",
+        "atomicNum": 74,
+        "massNum": 183.84,
+        "model": "TungstenObject",
+        "texture": "0_brassT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 6,
+        "y": 5,
+        "symbol": "Re",
+        "name": "Rhenium",
+        "atomicNum": 75,
+        "massNum": 186.21,
+        "model": "MolybdenumRheniumObject",
+        "texture": "0_ironT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 7,
+        "y": 5,
+        "symbol": "Os",
+        "name": "Osmium",
+        "atomicNum": 76,
+        "massNum": 190.23,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 8,
+        "y": 5,
+        "symbol": "Ir",
+        "name": "Iridium",
+        "atomicNum": 77,
+        "massNum": 192.22,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 9,
+        "y": 5,
+        "symbol": "Pt",
+        "name": "Platinum",
+        "atomicNum": 78,
+        "massNum": 195.08,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 10,
+        "y": 5,
+        "symbol": "Au",
+        "name": "Gold",
+        "atomicNum": 79,
+        "massNum": 196.97,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 11,
+        "y": 5,
+        "symbol": "Hg",
+        "name": "Mercury",
+        "atomicNum": 80,
+        "massNum": 200.59,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 12,
+        "y": 5,
+        "symbol": "Tl",
+        "name": "Thallium",
+        "atomicNum": 81,
+        "massNum": 204.38,
+        "model": "SulfurIodineThalliumObject",
+        "texture": "0_aquaBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 13,
+        "y": 5,
+        "symbol": "Pb",
+        "name": "Lead",
+        "atomicNum": 82,
+        "massNum": 207.20,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 14,
+        "y": 5,
+        "symbol": "Bi",
+        "name": "Bismuth",
+        "atomicNum": 83,
+        "massNum": 208.98,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 15,
+        "y": 5,
+        "symbol": "Po",
+        "name": "Polonium",
+        "atomicNum": 84,
+        "massNum": 209.00,
+        "model": "PoloniumObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 16,
+        "y": 5,
+        "symbol": "At",
+        "name": "Astatine",
+        "atomicNum": 85,
+        "massNum": 210.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 17,
+        "y": 5,
+        "symbol": "Rn",
+        "name": "Radon",
+        "atomicNum": 86,
+        "massNum": 222.00,
+        "model": "RadonObject",
+        "texture": "1_boneT.jpg",
+        "description": "description goes here"
+    },
+
+    {
+        "x": 0,
+        "y": 6,
+        "symbol": "Fr",
+        "name": "Francium",
+        "atomicNum": 87,
+        "massNum": 232.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 1,
+        "y": 6,
+        "symbol": "Ra",
+        "name": "Radium",
+        "atomicNum": 88,
+        "massNum": 226.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 3,
+        "y": 6,
+        "symbol": "Rf",
+        "name": "Rutherfordium",
+        "atomicNum": 104,
+        "massNum": 267.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 4,
+        "y": 6,
+        "symbol": "Db",
+        "name": "Dubnium",
+        "atomicNum": 105,
+        "massNum": 268.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 5,
+        "y": 6,
+        "symbol": "Sg",
+        "name": "Seaborgium",
+        "atomicNum": 106,
+        "massNum": 271.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 6,
+        "y": 6,
+        "symbol": "Bh",
+        "name": "Bohrium",
+        "atomicNum": 107,
+        "massNum": 272.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 7,
+        "y": 6,
+        "symbol": "Hs",
+        "name": "Hassium",
+        "atomicNum": 108,
+        "massNum": 270.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 8,
+        "y": 6,
+        "symbol": "Mt",
+        "name": "Meitnerium",
+        "atomicNum": 109,
+        "massNum": 276.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 9,
+        "y": 6,
+        "symbol": "Ds",
+        "name": "Darmstadtium",
+        "atomicNum": 110,
+        "massNum": 281.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 10,
+        "y": 6,
+        "symbol": "Rg",
+        "name": "Roentgenium",
+        "atomicNum": 111,
+        "massNum": 280.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 11,
+        "y": 6,
+        "symbol": "Cn",
+        "name": "Copernicium",
+        "atomicNum": 112,
+        "massNum": 285.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 12,
+        "y": 6,
+        "symbol": "Uut",
+        "name": "Ununtrium",
+        "atomicNum": 113,
+        "massNum": 284.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 13,
+        "y": 6,
+        "symbol": "Fl",
+        "name": "Flerovium",
+        "atomicNum": 114,
+        "massNum": 289.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 14,
+        "y": 6,
+        "symbol": "Uup",
+        "name": "Ununpentium",
+        "atomicNum": 115,
+        "massNum": 288.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 15,
+        "y": 6,
+        "symbol": "Lv",
+        "name": "Livermorium",
+        "atomicNum": 116,
+        "massNum": 293.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 16,
+        "y": 6,
+        "symbol": "Uus",
+        "name": "Ununseptium",
+        "atomicNum": 117,
+        "massNum": 294.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg",
+        "description": "description goes here"
+    }, {
+        "x": 17,
+        "y": 6,
+        "symbol": "Uuo",
+        "name": "Ununoctium",
+        "atomicNum": 118,
+        "massNum": 294.00,
+        "model": "UnknownObject",
+        "texture": "0_plasticBlueT.jpg"
+    }
+]
