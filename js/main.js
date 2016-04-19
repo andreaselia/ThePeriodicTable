@@ -55,6 +55,8 @@ var hasElements = false;
 var stateTable = false;
 var stateInfo = false;
 
+var protons = [];
+
 function init() {
     // Create the stats for tracking performance
     stats = new Stats();
@@ -128,6 +130,7 @@ function init() {
                     description: jsonData[i].description
                 });
             }
+
             // Call a function to setup the scene
             initTableScene();
         }
@@ -141,7 +144,17 @@ function init() {
 }
 
 function initTableScene() {
+    // // Create the background protons
+    for (var i = 0; i < 5; i++) {
+        var proton = new Proton();
+        proton.init();
+        proton.cube.position.set(Math.random() * 400 - 200, Math.random() * 400 - 200, 0);
+        protons.push(proton);
+        scene.add(proton.cube);
+    }
+
     stateTable = true;
+
     if (hasElements == false) {
         for (var i = 0; i < elements.length; i++) {
             if (elements[i] != undefined) {
@@ -215,7 +228,7 @@ function initInfoScene(elementId) {
         bbox.update();
         scene.add(bbox);
 
-        console.log(bbox.max);
+        // console.log(bbox.max);
     });
 }
 
@@ -227,15 +240,6 @@ function setColladaColour(dae, material) {
             setColladaColour(dae.children[i], material);
         }
     }
-}
-
-function rotateAroundObjectAxis(object, axis, radians) {
-    rotationMatrix = new t.Matrix4();
-    rotationMatrix.makeRotationAxis(axis.normalize(), radians);
-
-    object.matrix.multiply(rotationMatrix);
-
-    object.rotation.setFromRotationMatrix(object.matrix);
 }
 
 function animate() {
@@ -257,6 +261,15 @@ function update() {
         currentElementDae.rotation.set(i, 0, i);
 
         i += 0.01;
+    }
+
+    updateProtons(dt);
+}
+
+function updateProtons(dt) {
+    for (var i = 0; i < protons.length; i++) {
+        var proton = protons[i];
+        proton.update(dt);
     }
 }
 
@@ -293,6 +306,11 @@ function onMouseDown(event) {
             stateInfo = false;
         }
     }
+}
+
+function random(min, max) {
+    // Return a random number between the two numbers given
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
 function clearScene() {

@@ -27,8 +27,8 @@
         "name": "Lithium",
         "atomicNum": 3,
         "massNum": 6.94,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "LithiumObject",
+        "texture": "0_ironT.jpg",
         "description": "description goes here"
     }, {
         "x": 1,
@@ -57,8 +57,8 @@
         "name": "Carbon",
         "atomicNum": 6,
         "massNum": 12.01,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "CoalObject",
+        "texture": "Coal.png",
         "description": "description goes here"
     }, {
         "x": 14,
@@ -67,8 +67,8 @@
         "name": "Nitrogen",
         "atomicNum": 7,
         "massNum": 14.01,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "NitrogenObject",
+        "texture": "0_TennisBall_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 15,
@@ -191,7 +191,7 @@
         "name": "Potassium",
         "atomicNum": 19,
         "massNum": 39.10,
-        "model": "UnknownObject",
+        "model": "PotassiumObject",
         "texture": "0_plasticBlueT.jpg",
         "description": "description goes here"
     }, {
@@ -211,8 +211,8 @@
         "name": "Scandium",
         "atomicNum": 21,
         "massNum": 44.96,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "ScandiumObject",
+        "texture": "0_Mig29_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 3,
@@ -231,8 +231,8 @@
         "name": "Vanadium",
         "atomicNum": 23,
         "massNum": 50.94,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "VanadiumObject",
+        "texture": "0_BikeFrame_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 5,
@@ -271,8 +271,8 @@
         "name": "Cobalt",
         "atomicNum": 27,
         "massNum": 58.93,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "CobaltObject",
+        "texture": "0_Battery_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 9,
@@ -291,8 +291,8 @@
         "name": "Copper",
         "atomicNum": 29,
         "massNum": 63.55,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "CopperObject",
+        "texture": "0_Copper Pipe_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 11,
@@ -331,8 +331,8 @@
         "name": "Arsenic",
         "atomicNum": 33,
         "massNum": 74.92,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "ArsenicObject",
+        "texture": "0_AcidFlask_DIF.png",
         "description": "description goes here"
     }, {
         "x": 15,
@@ -383,8 +383,8 @@
         "name": "Strontium",
         "atomicNum": 38,
         "massNum": 87.62,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "StrontiumBariumObject",
+        "texture": "0_red.png",
         "description": "description goes here"
     }, {
         "x": 2,
@@ -453,8 +453,8 @@
         "name": "Rhodium",
         "atomicNum": 45,
         "massNum": 102.91,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "RhodiumObject",
+        "texture": "0_RhodimRing_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 9,
@@ -473,8 +473,8 @@
         "name": "Silver",
         "atomicNum": 47,
         "massNum": 107.87,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "PlatinumSilverObject",
+        "texture": "0_DiamondRing_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 11,
@@ -503,8 +503,8 @@
         "name": "Tin",
         "atomicNum": 50,
         "massNum": 118.71,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "TinObject",
+        "texture": "0_TinCan_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 14,
@@ -565,8 +565,8 @@
         "name": "Barium",
         "atomicNum": 56,
         "massNum": 137.33,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "StrontiumBariumObject",
+        "texture": "0_red.png",
         "description": "description goes here"
     }, {
         "x": 3,
@@ -575,8 +575,8 @@
         "name": "Hafnium",
         "atomicNum": 72,
         "massNum": 178.49,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "HafniumIridiumObject",
+        "texture": "0_Thurster_Diff.png",
         "description": "description goes here"
     }, {
         "x": 4,
@@ -625,8 +625,8 @@
         "name": "Iridium",
         "atomicNum": 77,
         "massNum": 192.22,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "HafniumIridiumObject",
+        "texture": "0_Thurster_Diff.png",
         "description": "description goes here"
     }, {
         "x": 9,
@@ -635,8 +635,8 @@
         "name": "Platinum",
         "atomicNum": 78,
         "massNum": 195.08,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "PlatinumSilverObject",
+        "texture": "0_DiamondRing_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 10,
@@ -675,8 +675,8 @@
         "name": "Lead",
         "atomicNum": 82,
         "massNum": 207.20,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "LeadObject",
+        "texture": "0_LeadPipe_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 14,
@@ -685,8 +685,8 @@
         "name": "Bismuth",
         "atomicNum": 83,
         "massNum": 208.98,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "BismuthObject",
+        "texture": "Medince_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 15,
@@ -737,8 +737,8 @@
         "name": "Radium",
         "atomicNum": 88,
         "massNum": 226.00,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "RadiumObject",
+        "texture": "0_neonT.jpg",
         "description": "description goes here"
     }, {
         "x": 3,
@@ -817,7 +817,7 @@
         "name": "Roentgenium",
         "atomicNum": 111,
         "massNum": 280.00,
-        "model": "UnknownObject",
+        "model": "GeneriumObject",
         "texture": "0_plasticBlueT.jpg",
         "description": "description goes here"
     }, {
