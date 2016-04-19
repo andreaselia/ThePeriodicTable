@@ -109,9 +109,9 @@
         "name": "Sodium",
         "atomicNum": 11,
         "massNum": 22.99,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "model": "SodiumObject",
+        "texture": "1_Netron.png",
+        "description": "Salt Shaker"
     }, {
         "x": 1,
         "y": 2,
@@ -119,7 +119,7 @@
         "name": "Magnesium",
         "atomicNum": 12,
         "massNum": 24.31,
-        "model": "UnknownObject",
+        "model": "MagnesiumObject",
         "texture": "0_plasticBlueT.jpg",
         "description": "description goes here"
     }, {
@@ -192,7 +192,7 @@
         "atomicNum": 19,
         "massNum": 39.10,
         "model": "PotassiumObject",
-        "texture": "0_plasticBlueT.jpg",
+        "texture": "0_yellow.jpg",
         "description": "description goes here"
     }, {
         "x": 1,
@@ -373,8 +373,8 @@
         "name": "Rubidium",
         "atomicNum": 37,
         "massNum": 85.47,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "RubidiumObject",
+        "texture": "0_metalRedT.jpg",
         "description": "description goes here"
     }, {
         "x": 1,
@@ -555,8 +555,8 @@
         "name": "Cesium",
         "atomicNum": 55,
         "massNum": 132.91,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "FranciumCesiumObject",
+        "texture": "0_LeadPipe_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 1,
@@ -727,8 +727,8 @@
         "name": "Francium",
         "atomicNum": 87,
         "massNum": 232.00,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "FranciumCesiumObject",
+        "texture": "0_yellow.jpg",
         "description": "description goes here"
     }, {
         "x": 1,
