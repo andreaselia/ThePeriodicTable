@@ -184,7 +184,7 @@ function initInfoScene(elementId) {
     var descriptionBox = document.createElement('id');
     descriptionBox.id = 'descriptionBox';
     descriptionBox.style = 'position: absolute;top: 200px; left: 0;right: 0;width: 40%;overflow: hidden;margin: 0 auto;min-width: 540px;max-width: 540px;background-color: #eee;color: #444;padding: 10px;border-radius: 2px;z-index: 5;';
-    descriptionBox.innerHTML = elements[elementId.id].description;
+    descriptionBox.innerHTML = "<h2>" + elements[elementId.id].symbol + " - " + elements[elementId.id].name + "</h2>" + "<h3>Atomic Number:</h3>" + elements[elementId.id].atomicNum + "<h3>Mass Number:</h3>" + elements[elementId.id].massNum + "<h3>Description:</h3>" + elements[elementId.id].description;
     document.body.appendChild(descriptionBox);
 
     var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0.1), new t.MeshBasicMaterial());
