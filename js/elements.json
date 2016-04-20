@@ -5,8 +5,8 @@
         "name": "Hydrogen",
         "atomicNum": 1,
         "massNum": 1.01,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "HydrogenObject",
+        "texture": "0_Blimp.png",
         "description": "Scientists had been producing hydrogen for years before it was recognized as an element. Written records indicate that Robert Boyle produced hydrogen gas as early as 1671 while experimenting with iron and acids. Hydrogen was first recognized as a distinct element by Henry Cavendish in 1766.<br><br>Composed of a single proton and a single electron, hydrogen is the simplest and most abundant element in the universe. It is estimated that 90% of the visible universe is composed of hydrogen.<br><br>Hydrogen is the raw fuel that most stars 'burn' to produce energy. The same process, known as fusion, is being studied as a possible power source for use on earth. The sun's supply of hydrogen is expected to last another 5 billion years.<br><br>Hydrogen is a commercially important element. Large amounts of hydrogen are combined with nitrogen from the air to produce ammonia (NH3) through a process called the Haber process. Hydrogen is also added to fats and oils, such as peanut oil, through a process called hydrogenation. Liquid hydrogen is used in the study of superconductors and, when combined with liquid oxygen, makes an excellent rocket fuel.<br><br>Hydrogen combines with other elements to form numerous compounds."
     }, {
         "x": 17,
@@ -47,8 +47,8 @@
         "name": "Boron",
         "atomicNum": 5,
         "massNum": 10.81,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 13,
@@ -149,8 +149,8 @@
         "name": "Phosphorus",
         "atomicNum": 15,
         "massNum": 30.97,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "PhosphorusObject",
+        "texture": "0_Fretizers_DIFF.png",
         "description": "description goes here"
     }, {
         "x": 15,
@@ -201,8 +201,8 @@
         "name": "Calcium",
         "atomicNum": 20,
         "massNum": 40.08,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "CalciumObject",
+        "texture": "0_Milk Churn.png",
         "description": "description goes here"
     }, {
         "x": 2,
@@ -221,8 +221,8 @@
         "name": "Titanium",
         "atomicNum": 22,
         "massNum": 47.87,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "TitaniumObject",
+        "texture": "0_SR 71.png",
         "description": "description goes here"
     }, {
         "x": 4,
@@ -393,8 +393,8 @@
         "name": "Yttrium",
         "atomicNum": 39,
         "massNum": 88.91,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "YttriumObject",
+        "texture": "0_SuperConductingMagnets.png",
         "description": "description goes here"
     }, {
         "x": 3,
@@ -403,8 +403,8 @@
         "name": "Zirconium",
         "atomicNum": 40,
         "massNum": 91.224,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "ZirconiumObject",
+        "texture": "0_coolingTower.png",
         "description": "description goes here"
     }, {
         "x": 4,
@@ -413,8 +413,8 @@
         "name": "Niobium",
         "atomicNum": 41,
         "massNum": 92.91,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "NiobiumObject",
+        "texture": "0_Conductor.png",
         "description": "description goes here"
     }, {
         "x": 5,
@@ -483,8 +483,8 @@
         "name": "Cadmium",
         "atomicNum": 48,
         "massNum": 112.41,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 12,
@@ -513,8 +513,8 @@
         "name": "Antimony",
         "atomicNum": 51,
         "massNum": 121.76,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 15,
@@ -615,8 +615,8 @@
         "name": "Osmium",
         "atomicNum": 76,
         "massNum": 190.23,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 8,
@@ -655,8 +655,8 @@
         "name": "Mercury",
         "atomicNum": 80,
         "massNum": 200.59,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 12,
@@ -747,8 +747,8 @@
         "name": "Rutherfordium",
         "atomicNum": 104,
         "massNum": 267.00,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 4,
@@ -767,8 +767,8 @@
         "name": "Seaborgium",
         "atomicNum": 106,
         "massNum": 271.00,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 6,
@@ -787,8 +787,8 @@
         "name": "Hassium",
         "atomicNum": 108,
         "massNum": 270.00,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 8,
@@ -807,8 +807,8 @@
         "name": "Darmstadtium",
         "atomicNum": 110,
         "massNum": 281.00,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 10,
@@ -837,8 +837,8 @@
         "name": "Ununtrium",
         "atomicNum": 113,
         "massNum": 284.00,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 13,
@@ -857,8 +857,8 @@
         "name": "Ununpentium",
         "atomicNum": 115,
         "massNum": 288.00,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 15,
@@ -877,8 +877,8 @@
         "name": "Ununseptium",
         "atomicNum": 117,
         "massNum": 294.00,
-        "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg",
+        "model": "UnknownObject2",
+        "texture": "0_qustion mark.png",
         "description": "description goes here"
     }, {
         "x": 17,

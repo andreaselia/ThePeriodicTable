@@ -17,20 +17,23 @@ var ASPECT_RATIO = WIDTH / HEIGHT;
 var NEAR_PLANE = 0.1;
 var FAR_PLANE = 10000;
 
-var scene;
-var renderer;
-var camera;
-var clock;
-var stats;
-var key;
+// Main variables
+var scene, renderer, camera;
 
-//Stores current element Collada and Dae file
+// Optional variables used for timing and performance
+var clock, stats;
+
+// Font variables
+var font, textGeometry, textMesh, textMaterial;
+
+// Stores current element Collada and Dae file
 var currentElementCollada;
 var currentElementDae;
 
 var rotationMatrix;
 
-var textureLoader;
+// Stores the texture and font loaders
+var textureLoader, fontLoader;
 
 // Periodic table elements and information
 var elements = [];
@@ -91,12 +94,11 @@ function init() {
     // Create a new instance of the clock
     clock = new t.Clock();
 
-    // Create a new instance of the key input handler
-    key = new Keyboard();
-
     raycaster = new t.Raycaster();
 
     textureLoader = new t.TextureLoader();
+
+    fontLoader = new t.FontLoader();
 
     // elementTextures.push(textureLoader.load('objects/images/image.png'));
 
@@ -133,6 +135,12 @@ function init() {
 
             // Call a function to setup the scene
             initTableScene();
+
+            fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+                font = response;
+
+                createText();
+            });
         }
     };
 
@@ -141,6 +149,39 @@ function init() {
 
     // Start the updating and rendering
     animate();
+}
+
+function createText() {
+    textGeometry = new t.TextGeometry("H", {
+        font,
+        size: 20,
+        height: 5
+    });
+
+    textMaterial = new t.MultiMaterial(
+        [
+            new t.MeshPhongMaterial({
+                color: 0xff00ff,
+                shading: t.FlatShading
+            }),
+            new t.MeshPhongMaterial({
+                color: 0xffffff,
+                shading: t.SmoothShading
+            })
+        ]
+    );
+
+    textMesh = new t.Mesh(textGeometry, textMaterial);
+
+    textGeometry.computeBoundingBox();
+
+    var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
+
+    textMesh.position.x = 0 - centerOffset - 100;
+    textMesh.position.y = 10;
+    textMesh.position.z = 300;
+
+    scene.add(textMesh);
 }
 
 function initTableScene() {
@@ -183,13 +224,13 @@ function initTableScene() {
 function initInfoScene(elementId) {
     var descriptionBox = document.createElement('id');
     descriptionBox.id = 'descriptionBox';
-    descriptionBox.style = 'position: absolute;top: 200px; left: 0;right: 0;width: 40%;overflow: hidden;margin: 0 auto;min-width: 540px;max-width: 540px;background-color: #eee;color: #444;padding: 10px;border-radius: 2px;z-index: 5;';
+    descriptionBox.style = 'position: absolute; top: 200px; left: -452px; right: 0; width: 40%; overflow: hidden; margin: 0 auto; min-width: 590px; max-width: 590px; background-color: #eee; color: #444; padding: 10px; border-radius: 2px; z-index: 5;';
     descriptionBox.innerHTML = "<h2>" + elements[elementId.id].symbol + " - " + elements[elementId.id].name + "</h2>" + "<h3>Atomic Number:</h3>" + elements[elementId.id].atomicNum + "<h3>Mass Number:</h3>" + elements[elementId.id].massNum + "<h3>Description:</h3>" + elements[elementId.id].description;
     document.body.appendChild(descriptionBox);
 
-    var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0.1), new t.MeshBasicMaterial());
+    var element = new t.Mesh(new t.CubeGeometry(20, scale, 0.1), new t.MeshBasicMaterial());
 
-    element.position.set(-(scale * 10) + scale, -1 + (-1 * scale), 290);
+    element.position.set(-(scale * 10) + scale, 50, 290);
     element.material.color.setHex(0x444444);
     element.name = {
         id: elementId.id,
