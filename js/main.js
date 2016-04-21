@@ -38,6 +38,8 @@ var textureLoader, fontLoader;
 // Periodic table elements and information
 var elements = [];
 
+var filterCheck = false;
+
 // Store an array of element textures
 // var elementTextures = [];
 
@@ -129,12 +131,13 @@ function init() {
                     massNum: jsonData[i].massNum,
                     model: jsonData[i].model,
                     texture: jsonData[i].texture,
-                    description: jsonData[i].description
+                    description: jsonData[i].description,
+                    type: jsonData[i].type
                 });
             }
 
             // Call a function to setup the scene
-            initTableScene();
+            initTableScene("nil");
 
             fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
                 font = response;
@@ -154,8 +157,8 @@ function init() {
 function createText() {
     textGeometry = new t.TextGeometry("H", {
         font,
-        size: 20,
-        height: 5
+        size: 1,
+        height: 1
     });
 
     textMaterial = new t.MultiMaterial(
@@ -184,7 +187,7 @@ function createText() {
     scene.add(textMesh);
 }
 
-function initTableScene() {
+function initTableScene(filterStyle) {
     // // Create the background protons
     for (var i = 0; i < 5; i++) {
         var proton = new Proton();
@@ -204,7 +207,14 @@ function initTableScene() {
                 var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
 
                 element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale) + 30, 290);
+
+                if(filterStyle.localeCompare(elements[i].type))
+                {
+                  element.material.color.setHex(0x666666);
+                }
+                else {
                 element.material.color.setHex(0xFFFFFF);
+              }
                 element.name = {
                     id: i,
                     b: true
@@ -219,6 +229,24 @@ function initTableScene() {
         }
         hasElements = true;
     }
+
+    var filterBox = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+    filterBox.position.set(-20, -60, 290);
+    filterBox.material.color.setHex(0xFFFFFF);
+    filterBox.name = {
+        id: "metal",
+        a: true
+
+    };
+
+
+    // Add the "element" to the scene
+    scene.add(filterBox);
+
+    // Add the element to the objects array so we can detect when it is clicked
+    objects.push(filterBox);
+
 }
 
 function initInfoScene(elementId) {
@@ -268,6 +296,7 @@ function initInfoScene(elementId) {
         var bbox = new THREE.BoundingBoxHelper(currentElementDae, 0x444444);
         bbox.update();
         scene.add(bbox);
+
 
         // console.log(bbox.max);
     });
@@ -337,12 +366,25 @@ function onMouseDown(event) {
             initInfoScene(intersects[0].object.name);
             stateTable = false;
             stateInfo = true;
+        } else if(intersects[0].object.name.a == true){
+          clearScene();
+          if(filterCheck == false)
+          {
+          initTableScene(intersects[0].object.name.id);
+          filterCheck = true;
+          }
+          else if(filterCheck == true)
+          {
+            initTableScene("nul");
+            filterCheck = false;
+          }
+          stateTable = true;
+          stateInfo = false;
         } else {
             clearScene();
-
             var elem = document.getElementById("descriptionBox");
             elem.parentNode.removeChild(elem);
-            initTableScene();
+            initTableScene("nil");
             stateTable = true;
             stateInfo = false;
         }
