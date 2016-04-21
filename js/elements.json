@@ -355,7 +355,7 @@
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
         "description": "description goes here",
-        "type": "metaloid"
+        "type": "metalloid"
     }, {
         "x": 14,
         "y": 3,
@@ -366,7 +366,7 @@
         "model": "ArsenicObject",
         "texture": "0_AcidFlask_DIF.png",
         "description": "description goes here",
-        "type": "metaloid"
+        "type": "metalloid"
     }, {
         "x": 15,
         "y": 3,
@@ -566,7 +566,7 @@
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
         "description": "description goes here",
-        "type": "metaloid"
+        "type": "metalloid"
     }, {
         "x": 15,
         "y": 4,
@@ -577,7 +577,7 @@
         "model": "TelluriumArgonObject",
         "texture": "0_brassT.jpg",
         "description": "description goes here",
-        "type": "metaloid"
+        "type": "metalloid"
     }, {
         "x": 16,
         "y": 4,
@@ -766,7 +766,7 @@
         "model": "PoloniumObject",
         "texture": "0_plasticBlueT.jpg",
         "description": "description goes here",
-        "type": "metaloid"
+        "type": "metalloid"
     }, {
         "x": 16,
         "y": 5,
