@@ -39,6 +39,9 @@ var textureLoader, fontLoader;
 var elements = [];
 
 var filterCheck = false;
+var metalFilterCheck = false;
+var metalloidFilterCheck = false;
+var nonmetalFilterCheck = false;
 
 // Store an array of element textures
 // var elementTextures = [];
@@ -139,11 +142,8 @@ function init() {
             // Call a function to setup the scene
             initTableScene("nil");
 
-            fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
-                font = response;
 
-                createText();
-            });
+
         }
     };
 
@@ -155,11 +155,12 @@ function init() {
 }
 
 function createText() {
-    textGeometry = new t.TextGeometry("H", {
-        font,
-        size: 1,
-        height: 1
-    });
+
+  for (var i = 0; i < elements.length; i++) {
+      if (elements[i] != undefined) {
+        var x = elements[i].x;
+        var y = elements[i].y;
+    textGeometry = new t.TextGeometry(elements[i].symbol, { font, size: 3, height: 1});
 
     textMaterial = new t.MultiMaterial(
         [
@@ -180,11 +181,13 @@ function createText() {
 
     var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
 
-    textMesh.position.x = 0 - centerOffset - 100;
-    textMesh.position.y = 10;
+    textMesh.position.x =   -(scale * 10) + x + (x * scale) - 5;
+    textMesh.position.y = -y + -(y * scale) + 30;
     textMesh.position.z = 300;
-
+    console.log("inside");
     scene.add(textMesh);
+  }
+}
 }
 
 function initTableScene(filterStyle) {
@@ -204,11 +207,13 @@ function initTableScene(filterStyle) {
             if (elements[i] != undefined) {
                 var x = elements[i].x;
                 var y = elements[i].y;
+
+
                 var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
 
                 element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale) + 30, 290);
 
-                if(filterStyle.localeCompare(elements[i].type))
+                if(filterStyle.localeCompare(elements[i].type) == 0)
                 {
                   element.material.color.setHex(0x666666);
                 }
@@ -225,27 +230,64 @@ function initTableScene(filterStyle) {
 
                 // Add the element to the objects array so we can detect when it is clicked
                 objects.push(element);
+
+
+
+
             }
         }
         hasElements = true;
     }
 
-    var filterBox = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var fontLoader = new t.FontLoader();
 
-    filterBox.position.set(-20, -60, 290);
-    filterBox.material.color.setHex(0xFFFFFF);
-    filterBox.name = {
+    fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+        font = response;
+
+        createText();
+
+      });
+
+    var metalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+    metalFilter.position.set(-20, -60, 290);
+    metalFilter.material.color.setHex(0xFFFFFF);
+    metalFilter.name = {
         id: "metal",
+        a: true
+
+    };
+
+    var metalloidFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+    metalloidFilter.position.set(20, -60, 290);
+    metalloidFilter.material.color.setHex(0xFFFFFF);
+    metalloidFilter.name = {
+        id: "metalloid",
+        a: true
+
+    };
+
+    var nonmetalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+    nonmetalFilter.position.set(0, -60, 290);
+    nonmetalFilter.material.color.setHex(0xFFFFFF);
+    nonmetalFilter.name = {
+        id: "nonmetal",
         a: true
 
     };
 
 
     // Add the "element" to the scene
-    scene.add(filterBox);
+    scene.add(metalFilter);
+    scene.add(nonmetalFilter);
+    scene.add(metalloidFilter);
 
     // Add the element to the objects array so we can detect when it is clicked
-    objects.push(filterBox);
+    objects.push(metalFilter);
+    objects.push(nonmetalFilter);
+    objects.push(metalloidFilter);
 
 }
 
