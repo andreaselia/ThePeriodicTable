@@ -2,7 +2,6 @@
  *  Code developed by the Moose Lightning group
  *  Andreas Elia, Jack Hilton, Connell Henry, Alex Woodward
  */
-
 // Once the page had loaded, call the init function
 window.onload = init;
 
@@ -158,50 +157,16 @@ function init() {
     animate();
 }
 
-function gameText(atomicNumber)
-{
+function gameText(atomicNumber) {
 
 
 
-  var question = "Click the element with the atomic number" + atomicNumber;
-  textGeometry = new t.TextGeometry(question, { font, size: 2, height: 1});
-
-  textMaterial = new t.MultiMaterial(
-      [
-          new t.MeshPhongMaterial({
-              color: 0xff00ff,
-              shading: t.FlatShading
-          }),
-          new t.MeshPhongMaterial({
-              color: 0xffffff,
-              shading: t.SmoothShading
-          })
-      ]
-  );
-
-  textMesh = new t.Mesh(textGeometry, textMaterial);
-
-  textGeometry.computeBoundingBox();
-
-  var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
-
-  textMesh.position.x =   0;
-  textMesh.position.y = 0;
-  textMesh.position.z = 300;
-  console.log("inside");
-  scene.add(textMesh);
-
-  awnser = atomicNumber;
-
-}
-
-function createTextTableSceneText() {
-
-  for (var i = 0; i < elements.length; i++) {
-      if (elements[i] != undefined) {
-        var x = elements[i].x;
-        var y = elements[i].y;
-    textGeometry = new t.TextGeometry(elements[i].symbol, { font, size: 2, height: 1});
+    var question = "Click the element with the atomic number" + atomicNumber;
+    textGeometry = new t.TextGeometry(question, {
+        font,
+        size: 2,
+        height: 1
+    });
 
     textMaterial = new t.MultiMaterial(
         [
@@ -222,13 +187,54 @@ function createTextTableSceneText() {
 
     var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
 
-    textMesh.position.x =   -(scale * 10) + x + (x * scale);
-    textMesh.position.y = -y + -(y * scale) + 30;
+    textMesh.position.x = 0;
+    textMesh.position.y = 0;
     textMesh.position.z = 300;
     console.log("inside");
     scene.add(textMesh);
-  }
+
+    awnser = atomicNumber;
+
 }
+
+function createTextTableSceneText() {
+
+    for (var i = 0; i < elements.length; i++) {
+        if (elements[i] != undefined) {
+            var x = elements[i].x;
+            var y = elements[i].y;
+            textGeometry = new t.TextGeometry(elements[i].symbol, {
+                font,
+                size: 2,
+                height: 1
+            });
+
+            textMaterial = new t.MultiMaterial(
+                [
+                    new t.MeshPhongMaterial({
+                        color: 0xff00ff,
+                        shading: t.FlatShading
+                    }),
+                    new t.MeshPhongMaterial({
+                        color: 0xffffff,
+                        shading: t.SmoothShading
+                    })
+                ]
+            );
+
+            textMesh = new t.Mesh(textGeometry, textMaterial);
+
+            textGeometry.computeBoundingBox();
+
+            var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
+
+            textMesh.position.x = -(scale * 10) + x + (x * scale);
+            textMesh.position.y = -y + -(y * scale) + 30;
+            textMesh.position.z = 300;
+            console.log("inside");
+            scene.add(textMesh);
+        }
+    }
 }
 
 function initTableScene(filterStyle) {
@@ -254,13 +260,11 @@ function initTableScene(filterStyle) {
 
                 element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale) + 30, 290);
 
-                if(filterStyle.localeCompare(elements[i].type) == 0)
-                {
-                  element.material.color.setHex(0x666666);
+                if (filterStyle.localeCompare(elements[i].type) == 0) {
+                    element.material.color.setHex(0x666666);
+                } else {
+                    element.material.color.setHex(0xFFFFFF);
                 }
-                else {
-                element.material.color.setHex(0xFFFFFF);
-              }
                 element.name = {
                     id: i,
                     b: true
@@ -287,7 +291,7 @@ function initTableScene(filterStyle) {
 
         createTextTableSceneText();
 
-      });
+    });
 
     var metalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
 
@@ -345,130 +349,129 @@ function initTableScene(filterStyle) {
 }
 
 function initTableSceneGame() {
-  // // Create the background protons
-  for (var i = 0; i < 5; i++) {
-      var proton = new Proton();
-      proton.init();
-      proton.cube.position.set(Math.random() * 400 - 200, Math.random() * 400 - 200, 0);
-      protons.push(proton);
-      scene.add(proton.cube);
-  }
+    // // Create the background protons
+    for (var i = 0; i < 5; i++) {
+        var proton = new Proton();
+        proton.init();
+        proton.cube.position.set(Math.random() * 400 - 200, Math.random() * 400 - 200, 0);
+        protons.push(proton);
+        scene.add(proton.cube);
+    }
 
-  stateTable = true;
+    stateTable = true;
 
-  if (hasElements == false) {
-      for (var i = 0; i < elements.length; i++) {
-          if (elements[i] != undefined) {
-              var x = elements[i].x;
-              var y = elements[i].y;
-
-
-              var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
-
-              element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale) + 30, 290);
+    if (hasElements == false) {
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i] != undefined) {
+                var x = elements[i].x;
+                var y = elements[i].y;
 
 
-              element.material.color.setHex(0xFFFFFF);
+                var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
 
-              element.name = {
-                  id: i,
-                  b: true
-              };
-
-              // Add the "element" to the scene
-              scene.add(element);
-
-              // Add the element to the objects array so we can detect when it is clicked
-              objects.push(element);
+                element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale) + 30, 290);
 
 
+                element.material.color.setHex(0xFFFFFF);
+
+                element.name = {
+                    id: i,
+                    b: true
+                };
+
+                // Add the "element" to the scene
+                scene.add(element);
+
+                // Add the element to the objects array so we can detect when it is clicked
+                objects.push(element);
 
 
-          }
-      }
-      hasElements = true;
-  }
 
-  var fontLoader = new t.FontLoader();
 
-  fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
-      font = response;
+            }
+        }
+        hasElements = true;
+    }
 
-      createTextTableSceneText();
+    var fontLoader = new t.FontLoader();
+
+    fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+        font = response;
+
+        createTextTableSceneText();
 
     });
 
-  var metalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var metalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
 
-  metalFilter.position.set(-20, -60, 290);
-  metalFilter.material.color.setHex(0xFFFFFF);
-  metalFilter.name = {
-      id: "metal",
-      a: true
+    metalFilter.position.set(-20, -60, 290);
+    metalFilter.material.color.setHex(0xFFFFFF);
+    metalFilter.name = {
+        id: "metal",
+        a: true
 
-  };
+    };
 
-  var metalloidFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var metalloidFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
 
-  metalloidFilter.position.set(20, -60, 290);
-  metalloidFilter.material.color.setHex(0xFFFFFF);
-  metalloidFilter.name = {
-      id: "metalloid",
-      a: true
+    metalloidFilter.position.set(20, -60, 290);
+    metalloidFilter.material.color.setHex(0xFFFFFF);
+    metalloidFilter.name = {
+        id: "metalloid",
+        a: true
 
-  };
+    };
 
-  var nonmetalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var nonmetalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
 
-  nonmetalFilter.position.set(0, -60, 290);
-  nonmetalFilter.material.color.setHex(0xFFFFFF);
-  nonmetalFilter.name = {
-      id: "nonmetal",
-      a: true
+    nonmetalFilter.position.set(0, -60, 290);
+    nonmetalFilter.material.color.setHex(0xFFFFFF);
+    nonmetalFilter.name = {
+        id: "nonmetal",
+        a: true
 
-  };
+    };
 
-  var game = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var game = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
 
-  game.position.set(60, -60, 290);
-  game.material.color.setHex(0xFFFFFF);
-  game.name = {
-      id: "game",
-      game: true
+    game.position.set(60, -60, 290);
+    game.material.color.setHex(0xFFFFFF);
+    game.name = {
+        id: "game",
+        game: true
 
-  };
-
-
-  // Add the "element" to the scene
-  scene.add(metalFilter);
-  scene.add(nonmetalFilter);
-  scene.add(metalloidFilter);
-  scene.add(game);
-
-  // Add the element to the objects array so we can detect when it is clicked
-  objects.push(metalFilter);
-  objects.push(nonmetalFilter);
-  objects.push(metalloidFilter);
-  objects.push(game);
+    };
 
 
+    // Add the "element" to the scene
+    scene.add(metalFilter);
+    scene.add(nonmetalFilter);
+    scene.add(metalloidFilter);
+    scene.add(game);
+
+    // Add the element to the objects array so we can detect when it is clicked
+    objects.push(metalFilter);
+    objects.push(nonmetalFilter);
+    objects.push(metalloidFilter);
+    objects.push(game);
 
 
-  generateQuestion();
+
+
+    generateQuestion();
 
 }
 
-function generateQuestion()
-{
+function generateQuestion() {
 
-  atomicNumber = Math.floor((Math.random() * 200) + 1);
+    atomicNumber = Math.floor((Math.random() * 200) + 1);
 
-  var fontLoader = new t.FontLoader();
+    var fontLoader = new t.FontLoader();
 
-  fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
-      font = response;
+    fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+        font = response;
 
-      gameText(atomicNumber);
+        gameText(atomicNumber);
 
     });
 
@@ -586,20 +589,15 @@ function onMouseDown(event) {
     var intersects = raycaster.intersectObjects(objects);
 
 
-    if(game)
-    {
-      if (intersects[0].object.name.b == true)
-        {
-          console.log(intersects[0].object.name);
-          if(intersects[0].object.atomicNum == atomicNumber)
-          {
-            console.log("correct");
-            correct();
-          }
-          else
-          {
-            incorect();
-          }
+    if (game) {
+        if (intersects[0].object.name.b == true) {
+            console.log(intersects[0].object.name);
+            if (intersects[0].object.atomicNum == atomicNumber) {
+                console.log("correct");
+                correct();
+            } else {
+                incorect();
+            }
         }
     }
 
@@ -611,37 +609,29 @@ function onMouseDown(event) {
             initInfoScene(intersects[0].object.name);
             stateTable = false;
             stateInfo = true;
-        } else if(intersects[0].object.name.a == true){
-          clearScene();
-          if(filterCheck == false)
-          {
-          initTableScene(intersects[0].object.name.id);
-          filterCheck = true;
-          }
-          else if(filterCheck == true)
-          {
-            initTableScene("nul");
-            filterCheck = false;
-          }
-          stateTable = true;
-          stateInfo = false;
+        } else if (intersects[0].object.name.a == true) {
+            clearScene();
+            if (filterCheck == false) {
+                initTableScene(intersects[0].object.name.id);
+                filterCheck = true;
+            } else if (filterCheck == true) {
+                initTableScene("nul");
+                filterCheck = false;
+            }
+            stateTable = true;
+            stateInfo = false;
         } else if (intersects[0].object.name.game == true) {
-          clearScene();
-          if(game == false)
-          {
-            initTableSceneGame();
-            game = true;
-          }
-          else
-          {
-              initTableScene("null");
-              game = false;
-          }
-          stateTable = false;
-          stateInfo = true;
-        }
-        else if(game == false)
-        {
+            clearScene();
+            if (game == false) {
+                initTableSceneGame();
+                game = true;
+            } else {
+                initTableScene("null");
+                game = false;
+            }
+            stateTable = false;
+            stateInfo = true;
+        } else if (game == false) {
             clearScene();
             var elem = document.getElementById("descriptionBox");
             elem.parentNode.removeChild(elem);
@@ -676,40 +666,41 @@ function onWindowResize() {
     renderer.setSize(WIDTH, HEIGHT);
 }
 
-function correct()
-{
+function correct() {
 
-  var fontLoader = new t.FontLoader();
+    var fontLoader = new t.FontLoader();
 
-  fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
-      font = response;
+    fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+        font = response;
 
-      awnserText("correct");
+        awnserText("correct");
 
     });
 
     generateQuestion();
 }
 
-function incorect()
-{
+function incorect() {
 
-  var fontLoader = new t.FontLoader();
+    var fontLoader = new t.FontLoader();
 
-  fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
-      font = response;
+    fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+        font = response;
 
-      awnserText("incorrect");
+        awnserText("incorrect");
 
     });
 
 
 }
 
-function awnserText(awnser)
-{
+function awnserText(awnser) {
 
-    textGeometry = new t.TextGeometry(awnser, { font, size: 2, height: 1});
+    textGeometry = new t.TextGeometry(awnser, {
+        font,
+        size: 2,
+        height: 1
+    });
 
     textMaterial = new t.MultiMaterial(
         [
@@ -730,11 +721,11 @@ function awnserText(awnser)
 
     var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
 
-    textMesh.position.x =   -50;
+    textMesh.position.x = -50;
     textMesh.position.y = 40;
     textMesh.position.z = 300;
     console.log("inside");
     scene.add(textMesh);
 
 
-  }
+}
