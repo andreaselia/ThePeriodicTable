@@ -23,6 +23,8 @@ var scene, renderer, camera;
 // Optional variables used for timing and performance
 var clock, stats;
 
+var game = false;
+
 // Font variables
 var font, textGeometry, textMesh, textMaterial;
 
@@ -50,6 +52,8 @@ var nonmetalFilterCheck = false;
 var objects = [];
 
 var raycaster;
+
+var atomicNumber;
 
 var mouse = {
     x: 0,
@@ -142,14 +146,7 @@ function init() {
             // Call a function to setup the scene
             initTableScene("nil");
 
-            window.addEventListener('resize', function() {
-                  var WIDTH = window.innerWidth,
-                      HEIGHT = window.innerHeight;
-                  renderer.setSize(WIDTH, HEIGHT);
-                  camera.aspect = WIDTH / HEIGHT;
-                  camera.updateProjectionMatrix();
-                  console.log(WIDTH);
-                });
+
 
         }
     };
@@ -159,6 +156,43 @@ function init() {
 
     // Start the updating and rendering
     animate();
+}
+
+function gameText(atomicNumber)
+{
+
+
+
+  var question = "Click the element with the atomic number" + atomicNumber;
+  textGeometry = new t.TextGeometry(question, { font, size: 2, height: 1});
+
+  textMaterial = new t.MultiMaterial(
+      [
+          new t.MeshPhongMaterial({
+              color: 0xff00ff,
+              shading: t.FlatShading
+          }),
+          new t.MeshPhongMaterial({
+              color: 0xffffff,
+              shading: t.SmoothShading
+          })
+      ]
+  );
+
+  textMesh = new t.Mesh(textGeometry, textMaterial);
+
+  textGeometry.computeBoundingBox();
+
+  var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
+
+  textMesh.position.x =   0;
+  textMesh.position.y = 0;
+  textMesh.position.z = 300;
+  console.log("inside");
+  scene.add(textMesh);
+
+  awnser = atomicNumber;
+
 }
 
 function createTextTableSceneText() {
@@ -285,18 +319,162 @@ function initTableScene(filterStyle) {
 
     };
 
+    var game = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+    game.position.set(60, -60, 290);
+    game.material.color.setHex(0xFFFFFF);
+    game.name = {
+        id: "game",
+        game: true
+
+    };
+
 
     // Add the "element" to the scene
     scene.add(metalFilter);
     scene.add(nonmetalFilter);
     scene.add(metalloidFilter);
+    scene.add(game);
 
     // Add the element to the objects array so we can detect when it is clicked
     objects.push(metalFilter);
     objects.push(nonmetalFilter);
     objects.push(metalloidFilter);
+    objects.push(game);
 
 }
+
+function initTableSceneGame() {
+  // // Create the background protons
+  for (var i = 0; i < 5; i++) {
+      var proton = new Proton();
+      proton.init();
+      proton.cube.position.set(Math.random() * 400 - 200, Math.random() * 400 - 200, 0);
+      protons.push(proton);
+      scene.add(proton.cube);
+  }
+
+  stateTable = true;
+
+  if (hasElements == false) {
+      for (var i = 0; i < elements.length; i++) {
+          if (elements[i] != undefined) {
+              var x = elements[i].x;
+              var y = elements[i].y;
+
+
+              var element = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+              element.position.set(-(scale * 10) + x + (x * scale), -y + -(y * scale) + 30, 290);
+
+
+              element.material.color.setHex(0xFFFFFF);
+
+              element.name = {
+                  id: i,
+                  b: true
+              };
+
+              // Add the "element" to the scene
+              scene.add(element);
+
+              // Add the element to the objects array so we can detect when it is clicked
+              objects.push(element);
+
+
+
+
+          }
+      }
+      hasElements = true;
+  }
+
+  var fontLoader = new t.FontLoader();
+
+  fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+      font = response;
+
+      createTextTableSceneText();
+
+    });
+
+  var metalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+  metalFilter.position.set(-20, -60, 290);
+  metalFilter.material.color.setHex(0xFFFFFF);
+  metalFilter.name = {
+      id: "metal",
+      a: true
+
+  };
+
+  var metalloidFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+  metalloidFilter.position.set(20, -60, 290);
+  metalloidFilter.material.color.setHex(0xFFFFFF);
+  metalloidFilter.name = {
+      id: "metalloid",
+      a: true
+
+  };
+
+  var nonmetalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+  nonmetalFilter.position.set(0, -60, 290);
+  nonmetalFilter.material.color.setHex(0xFFFFFF);
+  nonmetalFilter.name = {
+      id: "nonmetal",
+      a: true
+
+  };
+
+  var game = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+
+  game.position.set(60, -60, 290);
+  game.material.color.setHex(0xFFFFFF);
+  game.name = {
+      id: "game",
+      game: true
+
+  };
+
+
+  // Add the "element" to the scene
+  scene.add(metalFilter);
+  scene.add(nonmetalFilter);
+  scene.add(metalloidFilter);
+  scene.add(game);
+
+  // Add the element to the objects array so we can detect when it is clicked
+  objects.push(metalFilter);
+  objects.push(nonmetalFilter);
+  objects.push(metalloidFilter);
+  objects.push(game);
+
+
+
+
+  generateQuestion();
+
+}
+
+function generateQuestion()
+{
+
+  atomicNumber = Math.floor((Math.random() * 200) + 1);
+
+  var fontLoader = new t.FontLoader();
+
+  fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+      font = response;
+
+      gameText(atomicNumber);
+
+    });
+
+    console.log(atomicNumber);
+}
+
 
 function initInfoScene(elementId) {
     var descriptionBox = document.createElement('id');
@@ -407,10 +585,28 @@ function onMouseDown(event) {
 
     var intersects = raycaster.intersectObjects(objects);
 
+
+    if(game)
+    {
+      if (intersects[0].object.name.b == true)
+        {
+          console.log(intersects[0].object.name);
+          if(intersects[0].object.atomicNum == atomicNumber)
+          {
+            console.log("correct");
+            correct();
+          }
+          else
+          {
+            incorect();
+          }
+        }
+    }
+
     if (intersects.length > 0) {
         intersects[0].object.material.color.setHex(Math.random() * 0xffffff);
 
-        if (intersects[0].object.name.b == true) {
+        if (intersects[0].object.name.b == true && game == false) {
             clearScene();
             initInfoScene(intersects[0].object.name);
             stateTable = false;
@@ -429,7 +625,23 @@ function onMouseDown(event) {
           }
           stateTable = true;
           stateInfo = false;
-        } else {
+        } else if (intersects[0].object.name.game == true) {
+          clearScene();
+          if(game == false)
+          {
+            initTableSceneGame();
+            game = true;
+          }
+          else
+          {
+              initTableScene("null");
+              game = false;
+          }
+          stateTable = false;
+          stateInfo = true;
+        }
+        else if(game == false)
+        {
             clearScene();
             var elem = document.getElementById("descriptionBox");
             elem.parentNode.removeChild(elem);
@@ -463,3 +675,66 @@ function onWindowResize() {
     // Set the renderer set
     renderer.setSize(WIDTH, HEIGHT);
 }
+
+function correct()
+{
+
+  var fontLoader = new t.FontLoader();
+
+  fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+      font = response;
+
+      awnserText("correct");
+
+    });
+
+    generateQuestion();
+}
+
+function incorect()
+{
+
+  var fontLoader = new t.FontLoader();
+
+  fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+      font = response;
+
+      awnserText("incorrect");
+
+    });
+
+
+}
+
+function awnserText(awnser)
+{
+
+    textGeometry = new t.TextGeometry(awnser, { font, size: 2, height: 1});
+
+    textMaterial = new t.MultiMaterial(
+        [
+            new t.MeshPhongMaterial({
+                color: 0xff00ff,
+                shading: t.FlatShading
+            }),
+            new t.MeshPhongMaterial({
+                color: 0xffffff,
+                shading: t.SmoothShading
+            })
+        ]
+    );
+
+    textMesh = new t.Mesh(textGeometry, textMaterial);
+
+    textGeometry.computeBoundingBox();
+
+    var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
+
+    textMesh.position.x =   -50;
+    textMesh.position.y = 40;
+    textMesh.position.z = 300;
+    console.log("inside");
+    scene.add(textMesh);
+
+
+  }
