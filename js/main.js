@@ -24,14 +24,14 @@ var clock, stats;
 
 var game = false;
 
+var answer;
+
 // Font variables
 var font, textGeometry, textMesh, textMaterial;
 
 // Stores current element Collada and Dae file
 var currentElementCollada;
 var currentElementDae;
-
-var rotationMatrix;
 
 // Stores the texture and font loaders
 var textureLoader, fontLoader;
@@ -52,7 +52,8 @@ var objects = [];
 
 var raycaster;
 
-var atomicNumber;
+var massNumber;
+var type;
 
 var mouse = {
     x: 0,
@@ -60,6 +61,9 @@ var mouse = {
 };
 
 var scale = 8;
+
+var atomicNumber;
+var elementName;
 
 var hasElements = false;
 
@@ -144,9 +148,6 @@ function init() {
 
             // Call a function to setup the scene
             initTableScene("nil");
-
-
-
         }
     };
 
@@ -157,43 +158,131 @@ function init() {
     animate();
 }
 
-function gameText(atomicNumber) {
+function gameText(massNumber, type) {
 
 
+    if (type == 1) {
+        var question = "Click the element with the mass number... " + massNumber;
 
-    var question = "Click the element with the atomic number" + atomicNumber;
-    textGeometry = new t.TextGeometry(question, {
-        font,
-        size: 2,
-        height: 1
-    });
+        textGeometry = new t.TextGeometry(question, {
+            font,
+            size: 4,
+            height: 0
+        });
 
-    textMaterial = new t.MultiMaterial(
-        [
-            new t.MeshPhongMaterial({
-                color: 0xff00ff,
-                shading: t.FlatShading
-            }),
-            new t.MeshPhongMaterial({
-                color: 0xffffff,
-                shading: t.SmoothShading
-            })
-        ]
-    );
+        textMaterial = new t.MultiMaterial(
+            [
+                new t.MeshPhongMaterial({
+                    color: 0xff00ff,
+                    shading: t.FlatShading
+                }),
+                new t.MeshPhongMaterial({
+                    color: 0xffffff,
+                    shading: t.SmoothShading
+                })
+            ]
+        );
 
-    textMesh = new t.Mesh(textGeometry, textMaterial);
+        textMesh = new t.Mesh(textGeometry, textMaterial);
 
-    textGeometry.computeBoundingBox();
+        textGeometry.computeBoundingBox();
 
-    var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
+        var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
 
-    textMesh.position.x = 0;
-    textMesh.position.y = 0;
-    textMesh.position.z = 300;
-    console.log("inside");
-    scene.add(textMesh);
+        textMesh.position.x = -54;
+        textMesh.position.y = 50;
+        textMesh.position.z = 300;
+        console.log("inside");
+        scene.add(textMesh);
 
-    awnser = atomicNumber;
+        textGeometry.computeBoundingBox();
+
+        var textWidth = textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x;
+        var textHeight = textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y;
+
+        textMesh.position.x = -75.5 + (x * 8.5) + (-0.5 * textWidth);
+        textMesh.position.y = 29 + -(y * 8.5) + (-0.5 * textHeight);
+        textMesh.position.z = 300;
+
+        console.log("inside");
+
+        scene.add(textMesh);
+
+        answer = massNumber;
+    } else if (type == 2) {
+        var question = "Click the element with the mass number... " + massNumber;
+
+        textGeometry = new t.TextGeometry(question, {
+            font,
+            size: 4,
+            height: 0
+        });
+
+        textMaterial = new t.MultiMaterial(
+            [
+                new t.MeshPhongMaterial({
+                    color: 0xff00ff,
+                    shading: t.FlatShading
+                }),
+                new t.MeshPhongMaterial({
+                    color: 0xffffff,
+                    shading: t.SmoothShading
+                })
+            ]
+        );
+
+        textMesh = new t.Mesh(textGeometry, textMaterial);
+
+        textGeometry.computeBoundingBox();
+
+        var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
+
+        textMesh.position.x = -54;
+        textMesh.position.y = 50;
+        textMesh.position.z = 300;
+        console.log("inside");
+        scene.add(textMesh);
+
+
+        answer = massNumber;
+    } else {
+        var elementN = elements[random(0, elements.length - 1)].name;
+        var question = "Click the element " + elementN;
+
+
+        textGeometry = new t.TextGeometry(question, {
+            font,
+            size: 4,
+            height: 0
+        });
+
+        textMaterial = new t.MultiMaterial(
+            [
+                new t.MeshPhongMaterial({
+                    color: 0xff00ff,
+                    shading: t.FlatShading
+                }),
+                new t.MeshPhongMaterial({
+                    color: 0xffffff,
+                    shading: t.SmoothShading
+                })
+            ]
+        );
+
+        textMesh = new t.Mesh(textGeometry, textMaterial);
+
+        textGeometry.computeBoundingBox();
+
+        var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
+
+        textMesh.position.x = -54;
+        textMesh.position.y = 50;
+        textMesh.position.z = 300;
+        console.log("inside");
+        scene.add(textMesh);
+
+        answer = elementN;
+    }
 
 }
 
@@ -206,7 +295,7 @@ function createTextTableSceneText() {
             textGeometry = new t.TextGeometry(elements[i].symbol, {
                 font,
                 size: 2,
-                height: 1
+                height: 0
             });
 
             textMaterial = new t.MultiMaterial(
@@ -226,12 +315,15 @@ function createTextTableSceneText() {
 
             textGeometry.computeBoundingBox();
 
-            var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
+            var textWidth = textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x;
+            var textHeight = textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y;
 
-            textMesh.position.x = -(scale * 10) + x + (x * scale);
-            textMesh.position.y = -y + -(y * scale) + 30;
+            textMesh.position.x = -75.5 + (x * 8.5) + (-0.5 * textWidth);
+            textMesh.position.y = 29 + -(y * 8.5) + (-0.5 * textHeight);
             textMesh.position.z = 300;
+
             console.log("inside");
+
             scene.add(textMesh);
         }
     }
@@ -464,18 +556,45 @@ function initTableSceneGame() {
 
 function generateQuestion() {
 
-    atomicNumber = Math.floor((Math.random() * 200) + 1);
+    massNumber = elements[random(0, elements.length - 1)].massNum;
+    atomicNumber = elements[random(0, elements.length - 1)].atomicNum;
+    elementName = elements[random(0, elements.length - 1)].name;
 
-    var fontLoader = new t.FontLoader();
+    type = Math.floor((Math.random() * 3) + 1);
 
-    fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
-        font = response;
+    console.log(type);
 
-        gameText(atomicNumber);
+    if (type == 1) {
+        var fontLoader = new t.FontLoader();
 
-    });
+        fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+            font = response;
 
-    console.log(atomicNumber);
+            gameText(massNumber, 1);
+
+        });
+    } else if (type == 2) {
+        var fontLoader = new t.FontLoader();
+
+        fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+            font = response;
+
+            gameText(atomicNumber, 2);
+
+        });
+    } else {
+        var fontLoader = new t.FontLoader();
+
+        fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
+            font = response;
+
+            gameText(name, 3);
+
+        });
+
+    }
+
+    console.log(massNumber);
 }
 
 
@@ -488,7 +607,7 @@ function initInfoScene(elementId) {
 
     var element = new t.Mesh(new t.CubeGeometry(20, scale, 0.1), new t.MeshBasicMaterial());
 
-    element.position.set(-(scale * 10) + scale, 50, 290);
+    element.position.set(-(scale * 10) + scale + 2, 50 + 2, 290);
     element.material.color.setHex(0x444444);
     element.name = {
         id: elementId.id,
@@ -500,6 +619,34 @@ function initInfoScene(elementId) {
 
     // Add the element to the objects array so we can detect when it is clicked
     objects.push(element);
+
+    textGeometry = new t.TextGeometry("Back to table", {
+        font,
+        size: 2,
+        height: 0
+    });
+
+    textMaterial = new t.MultiMaterial(
+        [
+            new t.MeshPhongMaterial({
+                color: 0xffffff,
+                shading: t.FlatShading
+            }),
+            new t.MeshPhongMaterial({
+                color: 0xffffff,
+                shading: t.SmoothShading
+            })
+        ]
+    );
+
+    textMesh = new t.Mesh(textGeometry, textMaterial);
+
+    textGeometry.computeBoundingBox();
+
+    textMesh.position.x = -76;
+    textMesh.position.y = 46.5;
+    textMesh.position.z = 300;
+    scene.add(textMesh);
 
     currentElementCollada = new t.ColladaLoader();
     currentElementCollada.options.convertUpAxis = true;
@@ -588,21 +735,48 @@ function onMouseDown(event) {
 
     var intersects = raycaster.intersectObjects(objects);
 
-
-    if (game) {
-        if (intersects[0].object.name.b == true) {
-            console.log(intersects[0].object.name);
-            if (intersects[0].object.atomicNum == atomicNumber) {
-                console.log("correct");
-                correct();
-            } else {
-                incorect();
-            }
-        }
-    }
-
     if (intersects.length > 0) {
         intersects[0].object.material.color.setHex(Math.random() * 0xffffff);
+        console.log(answer);
+
+        if (game) {
+            console.log(type);
+            if (intersects[0].object.name.b == true) {
+                if (type == 1) {
+                    var id = intersects[0].object.name.id;
+                    console.log("PLAYED CLICKED: " + elements[id].massNum);
+                    if (elements[id].massNum == massNumber) {
+                        console.log("correct");
+                        correct();
+                    } else {
+                        console.log("incorrect we wanted " + massNumber + " not " + elements[id].massNum);
+                        incorect();
+                    }
+                } else if (type == 2) {
+                    var id = intersects[0].object.name.id;
+                    console.log("PLAYED CLICKED: " + elements[id].atomicNum);
+                    if (elements[id].atomicNum == atomicNumber) {
+                        console.log("correct");
+                        correct();
+                    } else {
+                        console.log("incorrect we wanted " + massNumber + " not " + elements[id].atomicNum);
+                        incorect();
+                    }
+
+                } else {
+                    var id = intersects[0].object.name.id;
+                    console.log("PLAYED CLICKED: " + elements[id].name);
+                    if (elements[id].name == elementName) {
+                        console.log("correct");
+                        correct();
+                    } else {
+                        console.log("incorrect we wanted " + massNumber + " not " + elements[id].name);
+                        incorect();
+                    }
+
+                }
+            }
+        }
 
         if (intersects[0].object.name.b == true && game == false) {
             clearScene();
@@ -623,6 +797,7 @@ function onMouseDown(event) {
         } else if (intersects[0].object.name.game == true) {
             clearScene();
             if (game == false) {
+
                 initTableSceneGame();
                 game = true;
             } else {
@@ -667,36 +842,40 @@ function onWindowResize() {
 }
 
 function correct() {
+    var timer = 0;
 
     var fontLoader = new t.FontLoader();
 
     fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
         font = response;
 
-        awnserText("correct");
+        answerText("correct");
 
     });
 
+    do {
+        timer++;
+    } while (timer < 900000);
+
+    clearScene();
+    initTableSceneGame();
+    game = true;
     generateQuestion();
 }
 
 function incorect() {
-
     var fontLoader = new t.FontLoader();
 
     fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
         font = response;
 
-        awnserText("incorrect");
+        answerText("incorrect");
 
     });
-
-
 }
 
-function awnserText(awnser) {
-
-    textGeometry = new t.TextGeometry(awnser, {
+function answerText(answer) {
+    textGeometry = new t.TextGeometry(answer, {
         font,
         size: 2,
         height: 1
@@ -724,8 +903,6 @@ function awnserText(awnser) {
     textMesh.position.x = -50;
     textMesh.position.y = 40;
     textMesh.position.z = 300;
-    console.log("inside");
+
     scene.add(textMesh);
-
-
 }
