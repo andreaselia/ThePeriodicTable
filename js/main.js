@@ -142,7 +142,14 @@ function init() {
             // Call a function to setup the scene
             initTableScene("nil");
 
-
+            window.addEventListener('resize', function() {
+                  var WIDTH = window.innerWidth,
+                      HEIGHT = window.innerHeight;
+                  renderer.setSize(WIDTH, HEIGHT);
+                  camera.aspect = WIDTH / HEIGHT;
+                  camera.updateProjectionMatrix();
+                  console.log(WIDTH);
+                });
 
         }
     };
@@ -154,13 +161,13 @@ function init() {
     animate();
 }
 
-function createText() {
+function createTextTableSceneText() {
 
   for (var i = 0; i < elements.length; i++) {
       if (elements[i] != undefined) {
         var x = elements[i].x;
         var y = elements[i].y;
-    textGeometry = new t.TextGeometry(elements[i].symbol, { font, size: 3, height: 1});
+    textGeometry = new t.TextGeometry(elements[i].symbol, { font, size: 2, height: 1});
 
     textMaterial = new t.MultiMaterial(
         [
@@ -181,7 +188,7 @@ function createText() {
 
     var centerOffset = -0.5 * (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x);
 
-    textMesh.position.x =   -(scale * 10) + x + (x * scale) - 5;
+    textMesh.position.x =   -(scale * 10) + x + (x * scale);
     textMesh.position.y = -y + -(y * scale) + 30;
     textMesh.position.z = 300;
     console.log("inside");
@@ -244,7 +251,7 @@ function initTableScene(filterStyle) {
     fontLoader.load('fonts/helvetiker_regular.typeface.js', function(response) {
         font = response;
 
-        createText();
+        createTextTableSceneText();
 
       });
 
@@ -337,7 +344,7 @@ function initInfoScene(elementId) {
 
         var bbox = new THREE.BoundingBoxHelper(currentElementDae, 0x444444);
         bbox.update();
-        scene.add(bbox);
+        //scene.add(bbox);
 
 
         // console.log(bbox.max);
