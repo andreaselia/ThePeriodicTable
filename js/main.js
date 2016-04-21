@@ -192,20 +192,6 @@ function gameText(massNumber, type) {
         textMesh.position.x = -54;
         textMesh.position.y = 50;
         textMesh.position.z = 300;
-        console.log("inside");
-        scene.add(textMesh);
-
-        textGeometry.computeBoundingBox();
-
-        var textWidth = textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x;
-        var textHeight = textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y;
-
-        textMesh.position.x = -75.5 + (x * 8.5) + (-0.5 * textWidth);
-        textMesh.position.y = 29 + -(y * 8.5) + (-0.5 * textHeight);
-        textMesh.position.z = 300;
-
-        console.log("inside");
-
         scene.add(textMesh);
 
         answer = massNumber;
@@ -240,7 +226,6 @@ function gameText(massNumber, type) {
         textMesh.position.x = -54;
         textMesh.position.y = 50;
         textMesh.position.z = 300;
-        console.log("inside");
         scene.add(textMesh);
 
 
@@ -278,7 +263,6 @@ function gameText(massNumber, type) {
         textMesh.position.x = -54;
         textMesh.position.y = 50;
         textMesh.position.z = 300;
-        console.log("inside");
         scene.add(textMesh);
 
         answer = elementN;
@@ -322,11 +306,117 @@ function createTextTableSceneText() {
             textMesh.position.y = 29 + -(y * 8.5) + (-0.5 * textHeight);
             textMesh.position.z = 300;
 
-            console.log("inside");
-
             scene.add(textMesh);
         }
     }
+
+    textGeometry = new t.TextGeometry("Metals", {
+        font,
+        size: 2,
+        height: 0
+    });
+
+    textMaterial = new t.MultiMaterial(
+        [
+            new t.MeshPhongMaterial({
+                color: 0xff00ff,
+                shading: t.FlatShading
+            }),
+            new t.MeshPhongMaterial({
+                color: 0xffffff,
+                shading: t.SmoothShading
+            })
+        ]
+    );
+
+    textMesh = new t.Mesh(textGeometry, textMaterial);
+
+    textMesh.position.x = -22.5;
+    textMesh.position.y = -57.5;
+    textMesh.position.z = 300;
+
+    scene.add(textMesh);
+
+    textGeometry = new t.TextGeometry("Metalloids", {
+        font,
+        size: 2,
+        height: 0
+    });
+
+    textMaterial = new t.MultiMaterial(
+        [
+            new t.MeshPhongMaterial({
+                color: 0xff00ff,
+                shading: t.FlatShading
+            }),
+            new t.MeshPhongMaterial({
+                color: 0xffffff,
+                shading: t.SmoothShading
+            })
+        ]
+    );
+
+    textMesh = new t.Mesh(textGeometry, textMaterial);
+
+    textMesh.position.x = 12.5;
+    textMesh.position.y = -57.5;
+    textMesh.position.z = 300;
+
+    scene.add(textMesh);
+
+    textGeometry = new t.TextGeometry("Non-Metal", {
+        font,
+        size: 2,
+        height: 0
+    });
+
+    textMaterial = new t.MultiMaterial(
+        [
+            new t.MeshPhongMaterial({
+                color: 0xff00ff,
+                shading: t.FlatShading
+            }),
+            new t.MeshPhongMaterial({
+                color: 0xffffff,
+                shading: t.SmoothShading
+            })
+        ]
+    );
+
+    textMesh = new t.Mesh(textGeometry, textMaterial);
+
+    textMesh.position.x = -6.5;
+    textMesh.position.y = -57.5;
+    textMesh.position.z = 300;
+
+    scene.add(textMesh);
+
+    textGeometry = new t.TextGeometry("Element Game", {
+        font,
+        size: 2,
+        height: 0
+    });
+
+    textMaterial = new t.MultiMaterial(
+        [
+            new t.MeshPhongMaterial({
+                color: 0xff00ff,
+                shading: t.FlatShading
+            }),
+            new t.MeshPhongMaterial({
+                color: 0xffffff,
+                shading: t.SmoothShading
+            })
+        ]
+    );
+
+    textMesh = new t.Mesh(textGeometry, textMaterial);
+
+    textMesh.position.x = 48;
+    textMesh.position.y = -57.5;
+    textMesh.position.z = 300;
+
+    scene.add(textMesh);
 }
 
 function initTableScene(filterStyle) {
@@ -367,10 +457,6 @@ function initTableScene(filterStyle) {
 
                 // Add the element to the objects array so we can detect when it is clicked
                 objects.push(element);
-
-
-
-
             }
         }
         hasElements = true;
@@ -385,7 +471,7 @@ function initTableScene(filterStyle) {
 
     });
 
-    var metalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var metalFilter = new t.Mesh(new t.CubeGeometry(scale + 10, scale, 0), new t.MeshBasicMaterial());
 
     metalFilter.position.set(-20, -60, 290);
     metalFilter.material.color.setHex(0xFFFFFF);
@@ -395,7 +481,7 @@ function initTableScene(filterStyle) {
 
     };
 
-    var metalloidFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var metalloidFilter = new t.Mesh(new t.CubeGeometry(scale + 10, scale, 0), new t.MeshBasicMaterial());
 
     metalloidFilter.position.set(20, -60, 290);
     metalloidFilter.material.color.setHex(0xFFFFFF);
@@ -405,7 +491,7 @@ function initTableScene(filterStyle) {
 
     };
 
-    var nonmetalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var nonmetalFilter = new t.Mesh(new t.CubeGeometry(scale + 10, scale, 0), new t.MeshBasicMaterial());
 
     nonmetalFilter.position.set(0, -60, 290);
     nonmetalFilter.material.color.setHex(0xFFFFFF);
@@ -415,7 +501,7 @@ function initTableScene(filterStyle) {
 
     };
 
-    var game = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var game = new t.Mesh(new t.CubeGeometry(scale + 15, scale, 0), new t.MeshBasicMaterial());
 
     game.position.set(60, -60, 290);
     game.material.color.setHex(0xFFFFFF);
@@ -494,7 +580,7 @@ function initTableSceneGame() {
 
     });
 
-    var metalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var metalFilter = new t.Mesh(new t.CubeGeometry(scale + 10, scale, 0), new t.MeshBasicMaterial());
 
     metalFilter.position.set(-20, -60, 290);
     metalFilter.material.color.setHex(0xFFFFFF);
@@ -504,7 +590,7 @@ function initTableSceneGame() {
 
     };
 
-    var metalloidFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var metalloidFilter = new t.Mesh(new t.CubeGeometry(scale + 10, scale, 0), new t.MeshBasicMaterial());
 
     metalloidFilter.position.set(20, -60, 290);
     metalloidFilter.material.color.setHex(0xFFFFFF);
@@ -514,7 +600,7 @@ function initTableSceneGame() {
 
     };
 
-    var nonmetalFilter = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var nonmetalFilter = new t.Mesh(new t.CubeGeometry(scale + 10, scale, 0), new t.MeshBasicMaterial());
 
     nonmetalFilter.position.set(0, -60, 290);
     nonmetalFilter.material.color.setHex(0xFFFFFF);
@@ -524,7 +610,7 @@ function initTableSceneGame() {
 
     };
 
-    var game = new t.Mesh(new t.CubeGeometry(scale, scale, 0), new t.MeshBasicMaterial());
+    var game = new t.Mesh(new t.CubeGeometry(scale + 15, scale, 0), new t.MeshBasicMaterial());
 
     game.position.set(60, -60, 290);
     game.material.color.setHex(0xFFFFFF);
@@ -562,8 +648,6 @@ function generateQuestion() {
 
     type = Math.floor((Math.random() * 3) + 1);
 
-    console.log(type);
-
     if (type == 1) {
         var fontLoader = new t.FontLoader();
 
@@ -593,8 +677,6 @@ function generateQuestion() {
         });
 
     }
-
-    console.log(massNumber);
 }
 
 
@@ -643,8 +725,8 @@ function initInfoScene(elementId) {
 
     textGeometry.computeBoundingBox();
 
-    textMesh.position.x = -76;
-    textMesh.position.y = 46.5;
+    textMesh.position.x = -74;
+    textMesh.position.y = 48;
     textMesh.position.z = 300;
     scene.add(textMesh);
 
@@ -669,14 +751,14 @@ function initInfoScene(elementId) {
         }));
 
         scene.add(currentElementDae);
-
-        var bbox = new THREE.BoundingBoxHelper(currentElementDae, 0x444444);
-        bbox.update();
-        //scene.add(bbox);
-
-
-        // console.log(bbox.max);
     });
+
+    // Setup light in the scene
+    var ambientLight = new t.AmbientLight(0xffffff);
+
+    // Add the ambient light to the scene
+    scene.add(ambientLight);
+
 }
 
 function setColladaColour(dae, material) {
@@ -737,40 +819,28 @@ function onMouseDown(event) {
 
     if (intersects.length > 0) {
         intersects[0].object.material.color.setHex(Math.random() * 0xffffff);
-        console.log(answer);
-
         if (game) {
-            console.log(type);
             if (intersects[0].object.name.b == true) {
                 if (type == 1) {
                     var id = intersects[0].object.name.id;
-                    console.log("PLAYED CLICKED: " + elements[id].massNum);
                     if (elements[id].massNum == massNumber) {
-                        console.log("correct");
                         correct();
                     } else {
-                        console.log("incorrect we wanted " + massNumber + " not " + elements[id].massNum);
                         incorect();
                     }
                 } else if (type == 2) {
                     var id = intersects[0].object.name.id;
-                    console.log("PLAYED CLICKED: " + elements[id].atomicNum);
                     if (elements[id].atomicNum == atomicNumber) {
-                        console.log("correct");
                         correct();
                     } else {
-                        console.log("incorrect we wanted " + massNumber + " not " + elements[id].atomicNum);
                         incorect();
                     }
 
                 } else {
                     var id = intersects[0].object.name.id;
-                    console.log("PLAYED CLICKED: " + elements[id].name);
                     if (elements[id].name == elementName) {
-                        console.log("correct");
                         correct();
                     } else {
-                        console.log("incorrect we wanted " + massNumber + " not " + elements[id].name);
                         incorect();
                     }
 
