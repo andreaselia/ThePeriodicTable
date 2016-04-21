@@ -7,8 +7,9 @@
         "massNum": 1.01,
         "model": "HydrogenObject",
         "texture": "0_Blimp.png",
-        "description": "Scientists had been producing hydrogen for years before it was recognized as an element. Written records indicate that Robert Boyle produced hydrogen gas as early as 1671 while experimenting with iron and acids. Hydrogen was first recognized as a distinct element by Henry Cavendish in 1766.<br><br>Composed of a single proton and a single electron, hydrogen is the simplest and most abundant element in the universe. It is estimated that 90% of the visible universe is composed of hydrogen.<br><br>Hydrogen is the raw fuel that most stars 'burn' to produce energy. The same process, known as fusion, is being studied as a possible power source for use on earth. The sun's supply of hydrogen is expected to last another 5 billion years.<br><br>Hydrogen is a commercially important element. Large amounts of hydrogen are combined with nitrogen from the air to produce ammonia (NH3) through a process called the Haber process. Hydrogen is also added to fats and oils, such as peanut oil, through a process called hydrogenation. Liquid hydrogen is used in the study of superconductors and, when combined with liquid oxygen, makes an excellent rocket fuel.<br><br>Hydrogen combines with other elements to form numerous compounds."
-    }, {
+        "description": "Scientists had been producing hydrogen for years before it was recognized as an element. Written records indicate that Robert Boyle produced hydrogen gas as early as 1671 while experimenting with iron and acids. Hydrogen was first recognized as a distinct element by Henry Cavendish in 1766.<br><br>Composed of a single proton and a single electron, hydrogen is the simplest and most abundant element in the universe. It is estimated that 90% of the visible universe is composed of hydrogen.<br><br>Hydrogen is the raw fuel that most stars 'burn' to produce energy. The same process, known as fusion, is being studied as a possible power source for use on earth. The sun's supply of hydrogen is expected to last another 5 billion years.<br><br>Hydrogen is a commercially important element. Large amounts of hydrogen are combined with nitrogen from the air to produce ammonia (NH3) through a process called the Haber process. Hydrogen is also added to fats and oils, such as peanut oil, through a process called hydrogenation. Liquid hydrogen is used in the study of superconductors and, when combined with liquid oxygen, makes an excellent rocket fuel.<br><br>Hydrogen combines with other elements to form numerous compounds.",
+        "type": "nonmetal"
+        }, {
         "x": 17,
         "y": 0,
         "symbol": "He",
@@ -17,7 +18,8 @@
         "massNum": 4.00,
         "model": "HeliumObject",
         "texture": "0_greenT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     },
 
     {
@@ -29,7 +31,8 @@
         "massNum": 6.94,
         "model": "LithiumObject",
         "texture": "0_ironT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 1,
         "y": 1,
@@ -39,7 +42,8 @@
         "massNum": 9.01,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 12,
         "y": 1,
@@ -49,7 +53,8 @@
         "massNum": 10.81,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metalloid"
     }, {
         "x": 13,
         "y": 1,
@@ -59,7 +64,8 @@
         "massNum": 12.01,
         "model": "CoalObject",
         "texture": "Coal.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 14,
         "y": 1,
@@ -69,7 +75,8 @@
         "massNum": 14.01,
         "model": "NitrogenObject",
         "texture": "0_TennisBall_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 15,
         "y": 1,
@@ -79,7 +86,8 @@
         "massNum": 15.99,
         "model": "OxygenObject",
         "texture": "0_ironT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 16,
         "y": 1,
@@ -89,7 +97,8 @@
         "massNum": 18.99,
         "model": "FluorineObject",
         "texture": "0_redWhiteT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 17,
         "y": 1,
@@ -99,7 +108,8 @@
         "massNum": 20.18,
         "model": "NeonObject",
         "texture": "0_neonT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     },
 
     {
@@ -111,7 +121,8 @@
         "massNum": 22.99,
         "model": "SodiumObject",
         "texture": "1_Netron.png",
-        "description": "Salt Shaker"
+        "description": "Salt Shaker",
+        "type": "metal"
     }, {
         "x": 1,
         "y": 2,
@@ -121,7 +132,8 @@
         "massNum": 24.31,
         "model": "MagnesiumObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 12,
         "y": 2,
@@ -131,7 +143,8 @@
         "massNum": 26.98,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 13,
         "y": 2,
@@ -141,7 +154,8 @@
         "massNum": 28.09,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metalloid"
     }, {
         "x": 14,
         "y": 2,
@@ -151,7 +165,8 @@
         "massNum": 30.97,
         "model": "PhosphorusObject",
         "texture": "0_Fretizers_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 15,
         "y": 2,
@@ -161,7 +176,8 @@
         "massNum": 32.06,
         "model": "SulfurIodineThalliumObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 16,
         "y": 2,
@@ -171,7 +187,8 @@
         "massNum": 35.45,
         "model": "ChlorineObject",
         "texture": "0_aquaBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 17,
         "y": 2,
@@ -181,7 +198,8 @@
         "massNum": 39.95,
         "model": "TelluriumArgonObject",
         "texture": "0_brassT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     },
 
     {
@@ -193,7 +211,8 @@
         "massNum": 39.10,
         "model": "PotassiumObject",
         "texture": "0_yellow.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 1,
         "y": 3,
@@ -203,7 +222,8 @@
         "massNum": 40.08,
         "model": "CalciumObject",
         "texture": "0_Milk Churn.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 2,
         "y": 3,
@@ -213,7 +233,8 @@
         "massNum": 44.96,
         "model": "ScandiumObject",
         "texture": "0_Mig29_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 3,
         "y": 3,
@@ -223,7 +244,8 @@
         "massNum": 47.87,
         "model": "TitaniumObject",
         "texture": "0_SR 71.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 4,
         "y": 3,
@@ -233,7 +255,8 @@
         "massNum": 50.94,
         "model": "VanadiumObject",
         "texture": "0_BikeFrame_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 5,
         "y": 3,
@@ -243,7 +266,8 @@
         "massNum": 51.99,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 6,
         "y": 3,
@@ -253,7 +277,8 @@
         "massNum": 54.94,
         "model": "ManganeseObject",
         "texture": "0_woodT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 7,
         "y": 3,
@@ -263,7 +288,8 @@
         "massNum": 55.85,
         "model": "IronObject",
         "texture": "0_ironT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 8,
         "y": 3,
@@ -273,7 +299,8 @@
         "massNum": 58.93,
         "model": "CobaltObject",
         "texture": "0_Battery_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 9,
         "y": 3,
@@ -283,7 +310,8 @@
         "massNum": 58.69,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 10,
         "y": 3,
@@ -293,7 +321,8 @@
         "massNum": 63.55,
         "model": "CopperObject",
         "texture": "0_Copper Pipe_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 11,
         "y": 3,
@@ -303,7 +332,8 @@
         "massNum": 65.38,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 12,
         "y": 3,
@@ -313,7 +343,8 @@
         "massNum": 69.72,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 13,
         "y": 3,
@@ -323,7 +354,8 @@
         "massNum": 72.63,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metaloid"
     }, {
         "x": 14,
         "y": 3,
@@ -333,7 +365,8 @@
         "massNum": 74.92,
         "model": "ArsenicObject",
         "texture": "0_AcidFlask_DIF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metaloid"
     }, {
         "x": 15,
         "y": 3,
@@ -343,7 +376,8 @@
         "massNum": 78.97,
         "model": "SeleniumRutheniumObject",
         "texture": "0_solarPanelT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 16,
         "y": 3,
@@ -353,7 +387,8 @@
         "massNum": 79.90,
         "model": "BromineTechnefiumObject",
         "texture": "0_whiteT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 17,
         "y": 3,
@@ -363,7 +398,8 @@
         "massNum": 83.80,
         "model": "KryptonObject",
         "texture": "0_metalRedT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     },
 
     {
@@ -375,7 +411,8 @@
         "massNum": 85.47,
         "model": "RubidiumObject",
         "texture": "0_metalRedT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 1,
         "y": 4,
@@ -385,7 +422,8 @@
         "massNum": 87.62,
         "model": "StrontiumBariumObject",
         "texture": "0_red.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 2,
         "y": 4,
@@ -395,7 +433,8 @@
         "massNum": 88.91,
         "model": "YttriumObject",
         "texture": "0_SuperConductingMagnets.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 3,
         "y": 4,
@@ -405,7 +444,8 @@
         "massNum": 91.224,
         "model": "ZirconiumObject",
         "texture": "0_coolingTower.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 4,
         "y": 4,
@@ -415,7 +455,8 @@
         "massNum": 92.91,
         "model": "NiobiumObject",
         "texture": "0_Conductor.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 5,
         "y": 4,
@@ -425,7 +466,8 @@
         "massNum": 95.95,
         "model": "MolybdenumRheniumObject",
         "texture": "0_ironT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 6,
         "y": 4,
@@ -435,7 +477,8 @@
         "massNum": 98.00,
         "model": "BromineTechnefiumObject",
         "texture": "0_whiteT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 7,
         "y": 4,
@@ -445,7 +488,8 @@
         "massNum": 101.07,
         "model": "SeleniumRutheniumObject",
         "texture": "0_solarPanelT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 8,
         "y": 4,
@@ -455,7 +499,8 @@
         "massNum": 102.91,
         "model": "RhodiumObject",
         "texture": "0_RhodimRing_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 9,
         "y": 4,
@@ -465,7 +510,8 @@
         "massNum": 106.42,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 10,
         "y": 4,
@@ -475,7 +521,8 @@
         "massNum": 107.87,
         "model": "PlatinumSilverObject",
         "texture": "0_DiamondRing_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 11,
         "y": 4,
@@ -485,7 +532,8 @@
         "massNum": 112.41,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 12,
         "y": 4,
@@ -495,7 +543,8 @@
         "massNum": 114.82,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 13,
         "y": 4,
@@ -505,7 +554,8 @@
         "massNum": 118.71,
         "model": "TinObject",
         "texture": "0_TinCan_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 14,
         "y": 4,
@@ -515,7 +565,8 @@
         "massNum": 121.76,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metaloid"
     }, {
         "x": 15,
         "y": 4,
@@ -525,7 +576,8 @@
         "massNum": 127.60,
         "model": "TelluriumArgonObject",
         "texture": "0_brassT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metaloid"
     }, {
         "x": 16,
         "y": 4,
@@ -535,7 +587,8 @@
         "massNum": 126.90,
         "model": "SulfurIodineThalliumObject",
         "texture": "0_aquaBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 17,
         "y": 4,
@@ -545,7 +598,8 @@
         "massNum": 131.29,
         "model": "XenonObject",
         "texture": "0_metalRedT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     },
 
     {
@@ -557,7 +611,8 @@
         "massNum": 132.91,
         "model": "FranciumCesiumObject",
         "texture": "0_LeadPipe_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 1,
         "y": 5,
@@ -567,7 +622,8 @@
         "massNum": 137.33,
         "model": "StrontiumBariumObject",
         "texture": "0_red.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 3,
         "y": 5,
@@ -577,7 +633,8 @@
         "massNum": 178.49,
         "model": "HafniumIridiumObject",
         "texture": "0_Thurster_Diff.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 4,
         "y": 5,
@@ -587,7 +644,8 @@
         "massNum": 180.95,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 5,
         "y": 5,
@@ -597,7 +655,8 @@
         "massNum": 183.84,
         "model": "TungstenObject",
         "texture": "0_brassT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 6,
         "y": 5,
@@ -607,7 +666,8 @@
         "massNum": 186.21,
         "model": "MolybdenumRheniumObject",
         "texture": "0_ironT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 7,
         "y": 5,
@@ -617,7 +677,8 @@
         "massNum": 190.23,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 8,
         "y": 5,
@@ -627,7 +688,8 @@
         "massNum": 192.22,
         "model": "HafniumIridiumObject",
         "texture": "0_Thurster_Diff.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 9,
         "y": 5,
@@ -637,7 +699,8 @@
         "massNum": 195.08,
         "model": "PlatinumSilverObject",
         "texture": "0_DiamondRing_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 10,
         "y": 5,
@@ -647,7 +710,8 @@
         "massNum": 196.97,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 11,
         "y": 5,
@@ -657,7 +721,8 @@
         "massNum": 200.59,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 12,
         "y": 5,
@@ -667,7 +732,8 @@
         "massNum": 204.38,
         "model": "SulfurIodineThalliumObject",
         "texture": "0_aquaBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 13,
         "y": 5,
@@ -677,7 +743,8 @@
         "massNum": 207.20,
         "model": "LeadObject",
         "texture": "0_LeadPipe_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 14,
         "y": 5,
@@ -687,7 +754,8 @@
         "massNum": 208.98,
         "model": "BismuthObject",
         "texture": "Medince_DIFF.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 15,
         "y": 5,
@@ -697,7 +765,8 @@
         "massNum": 209.00,
         "model": "PoloniumObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metaloid"
     }, {
         "x": 16,
         "y": 5,
@@ -707,7 +776,8 @@
         "massNum": 210.00,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     }, {
         "x": 17,
         "y": 5,
@@ -717,7 +787,8 @@
         "massNum": 222.00,
         "model": "RadonObject",
         "texture": "1_boneT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "nonmetal"
     },
 
     {
@@ -729,7 +800,8 @@
         "massNum": 232.00,
         "model": "FranciumCesiumObject",
         "texture": "0_yellow.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 1,
         "y": 6,
@@ -739,7 +811,8 @@
         "massNum": 226.00,
         "model": "RadiumObject",
         "texture": "0_neonT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 3,
         "y": 6,
@@ -749,7 +822,8 @@
         "massNum": 267.00,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 4,
         "y": 6,
@@ -759,7 +833,8 @@
         "massNum": 268.00,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 5,
         "y": 6,
@@ -769,7 +844,8 @@
         "massNum": 271.00,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 6,
         "y": 6,
@@ -779,7 +855,8 @@
         "massNum": 272.00,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 7,
         "y": 6,
@@ -789,7 +866,8 @@
         "massNum": 270.00,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 8,
         "y": 6,
@@ -799,7 +877,8 @@
         "massNum": 276.00,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 9,
         "y": 6,
@@ -809,7 +888,8 @@
         "massNum": 281.00,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 10,
         "y": 6,
@@ -819,7 +899,8 @@
         "massNum": 280.00,
         "model": "GeneriumObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 11,
         "y": 6,
@@ -829,7 +910,8 @@
         "massNum": 285.00,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "metal"
     }, {
         "x": 12,
         "y": 6,
@@ -839,7 +921,8 @@
         "massNum": 284.00,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "unkown"
     }, {
         "x": 13,
         "y": 6,
@@ -849,7 +932,8 @@
         "massNum": 289.00,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "unkown"
     }, {
         "x": 14,
         "y": 6,
@@ -859,7 +943,8 @@
         "massNum": 288.00,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "unkown"
     }, {
         "x": 15,
         "y": 6,
@@ -869,7 +954,8 @@
         "massNum": 293.00,
         "model": "UnknownObject",
         "texture": "0_plasticBlueT.jpg",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "unkown"
     }, {
         "x": 16,
         "y": 6,
@@ -879,7 +965,8 @@
         "massNum": 294.00,
         "model": "UnknownObject2",
         "texture": "0_qustion mark.png",
-        "description": "description goes here"
+        "description": "description goes here",
+        "type": "unkown"
     }, {
         "x": 17,
         "y": 6,
@@ -888,6 +975,7 @@
         "atomicNum": 118,
         "massNum": 294.00,
         "model": "UnknownObject",
-        "texture": "0_plasticBlueT.jpg"
+        "texture": "0_plasticBlueT.jpg",
+        "type": "unkown"
     }
 ]
